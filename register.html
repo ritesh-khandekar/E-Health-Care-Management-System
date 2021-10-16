@@ -1,0 +1,93 @@
+<?php
+$err = '';
+if(isset($_GET["valerrno"])){
+  $n = $_GET["valerrno"];
+  if($n==0){
+    $err = "Please fill all details!";
+  }
+  if($n==1){
+    $err = "Passwords Mismatch!";
+  }
+  if($n==3){
+    $err = "Account already Exists on this Email!";
+  }
+}
+?>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="./css/register.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Registration Form</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form method="POST" action="register.php">
+          <div><?= $err!=""? "<div style='padding:10px;color:red'>$err</div>":""?></div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" name="fname" placeholder="First Name" />
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" name="lname" placeholder="Last Name" required />
+              </div>
+            </div>
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input type="password" name="password" placeholder="Password" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input type="password" name="repassword" placeholder="Re-type Password" required />
+          </div>
+          <div class="input_field"> <span><i aria-hidden="true" class="fa "><b>+91</b></i></span>
+            <input type="text" name="phone" placeholder="Phone No." required />
+          </div>
+
+
+            	<div class="input_field radio_option">
+              <input type="radio" name="gender" value="male" id="rd1" required>
+              <label for="rd1">Male</label>
+              <input type="radio" name="gender" value="female" id="rd2" required>
+              <label for="rd2">Female</label>
+              </div>
+              <!--<div class="input_field select_option">
+                <select>
+                  <option>Select a country</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+                <div class="select_arrow"></div>
+              </div>
+            <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb1">
+    			<label for="cb1">I agree with terms and conditions</label>
+            </div>
+            <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb2">
+    			<label for="cb2">I want to receive the newsletter</label>
+            </div>-->
+          <input class="button" name="register" type="submit" value="Register" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="credit"><a href="http://www.designtheway.com" target="_blank"></a></p>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/4ecc3dbb0b.js'></script>
+</body>
+</html>
