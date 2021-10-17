@@ -1,3 +1,18 @@
+<?php
+$err = '';
+if(isset($_GET["valerrno"])){
+  $n = $_GET["valerrno"];
+  if($n==0){
+    $err = "Please Enter your Email and Password";
+  }
+  if($n==1){
+    $err = "Email or Password Incorrect!";
+  }
+  if($n==3){
+    $err = "Account already Exists on this Email!";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +39,12 @@
 			<div class="box-header">
 				<h2>Log In</h2>
 			</div>
+			<?php 
+				require("methods.php");
+				if(!$err==""){
+					echo "<div style='padding:10px;color:red'>$err</div>";
+				}
+			?>
 			<label for="username">Email</label>
 			<br/>
 			<input type="text" id="username" name = "email">

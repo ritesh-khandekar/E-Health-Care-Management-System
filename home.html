@@ -1,5 +1,11 @@
-
-
+<?php
+require("methods.php");
+$login = false;
+if(islogin()){
+   global $login;
+   $login = true;
+}
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1200},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -113,10 +119,17 @@
             </div><div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
                   <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
- <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
+<a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
 <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
+<?php
+if($login):
+?>
+<a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
+
+<?php else: ?>
 <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
 <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
+<?php endif ?>
 </p>
                </div>
             </div></div>
