@@ -13,7 +13,6 @@
         return $str;
     }
     function islogin(){
-        session_start();
         if(isset($_SESSION["hms_login"])){
             if($_SESSION["hms_login"]){
                 foreach($_SESSION as $key=>$val){

@@ -1,4 +1,12 @@
-
+<?php
+require("methods.php");
+session_start();
+$login = false;
+if(islogin()){
+   global $login;
+   $login = true;
+}
+?>
 <!DOCTYPE html>
 <html lang="">
    <head>
@@ -112,7 +120,14 @@
                   <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
+                     <?php
+                     if($login):
+                     ?>
+                     <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
+                     
+                     <?php else: ?> 
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
+                     <?php endif ?>
                   </p>
                </div>
             </div>

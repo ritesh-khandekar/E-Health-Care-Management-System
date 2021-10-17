@@ -1,3 +1,12 @@
+<?php
+require("methods.php");
+session_start();
+$login = false;
+if(islogin()){
+   global $login;
+   $login = true;
+}
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1197},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -76,32 +85,7 @@ document.querySelector(".editable-style.container-element.silex-id-1633680397534
       transform 0.1s ease-in,
       background 0.1s ease-in;}.hamburger-menu_1634140991607_912.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1634140991607_912 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1634140991607_912.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1634140991607_912.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1634140991607_912 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1634140991607_912.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
 <!-- inspired by https://codepen.io/erikterwan/pen/EVzeRP -->
-<div class="hamburger-menu_1634140991607_912 closed">
-    <div class="hamburger-btn fixed">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-container">
-      <div class="prevent-scale">
-        <nav role="navigation" class="">
-            <ul>
-            
-                <li><a href="#!page-home" class="page-link-active">Home</a></li>
-            
-                <li><a href="#!page-vacations">Vacations</a></li>
-            
-                <li><a href="#!page-flights">Flights</a></li>
-            
-                <li><a href="#!page-hotels">Hotels</a></li>
-            
-                <li><a href="#!page-contact">Contact</a></li>
-            
-            </ul>
-        </nav>
-      </div>
-  </div>
-</div>
+
 <script>
 (function() {
   var isOpen = false;
@@ -140,8 +124,17 @@ document.querySelector(".editable-style.container-element.silex-id-1633680397534
                <div class="silex-element-content normal">
                   <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
+                     <?php
+                     if($login):
+                     ?>
+                     <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.html'">DASHBOARD</a>
+                     
+                     <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
+                     
+                     <?php else: ?> 
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
+                     <?php endif ?>
                   </p>
                </div>
             </div>

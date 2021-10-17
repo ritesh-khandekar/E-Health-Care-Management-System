@@ -19,7 +19,7 @@ if(!isset($_POST["login_btn"])) return;
             $gender = $row["gender"];
         }
         login($fname,$lname,$email,$gender);
-        header("location: home.html?success");
+        header("location: patienthome.html?success");
     }else{
         header("location: patientlogin.html?valerrno=1");
     }

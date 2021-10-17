@@ -1,7 +1,9 @@
 <?php
 require("methods.php");
+session_start();
 $login = false;
 if(islogin()){
+   header("location: patienthome.html");
    global $login;
    $login = true;
 }
