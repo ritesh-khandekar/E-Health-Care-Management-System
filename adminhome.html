@@ -263,7 +263,7 @@ init_1634714382402_851();
 <button type="button" class="btn btn-primary">All Doctors</button>
 </div>
 <script>
-    document.querySelector(".actionbuttons3").querySelectorAll("button").forEach((btn,i)=>{btn.addbtnEventListener("click",function(){window.location.href= i == 0 ? "adddoctor.html": i==1 ? "addpatient.html": "alldoctors.html";})});
+    document.querySelector(".actionbuttons3").querySelectorAll("button").forEach((btn,i)=>{btn.addEventListener("click",function(){window.location.href= i == 0 ? "adddoctor.html": i==1 ? "addpatient.html": "alldoctors.html";})});
 
 </script></div></div><div data-silex-type="html-element" class="editable-style html-element silex-id-1634715033152-2 page-home paged-element" data-silex-id="silex-id-1634715033152-2" style=""><div class="silex-element-content"><div class="actionbuttons3">
 <button type="button" class="btn btn-primary">All Patients</button>
