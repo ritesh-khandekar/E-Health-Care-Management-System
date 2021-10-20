@@ -1,10 +1,14 @@
 <?php
 if(!isset($_POST["login_btn"])) return;
+var_dump($_POST);   
+$type = isset($_POST["type"]) ? $_POST["type"]: "";
 
     $email = secure($_POST["email"]);
     $pass = secure($_POST["password"]);
+   
     if($email=="" || $pass==""){
-        header("location: patientlogin.html?valerrno=0");
+        
+        header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=0": "location: patientlogin.html?valerrno=0");
         return;
     }
     require("conn.php");
@@ -17,11 +21,14 @@ if(!isset($_POST["login_btn"])) return;
             $lname =  $row["lname"];
             $email = $row["email"];
             $gender = $row["gender"];
+            $type = $row["type"];
         }
         login($fname,$lname,$email,$gender);
         header("location: patienthome.html?success");
+        return;
     }else{
-        header("location: patientlogin.html?valerrno=1");
+        header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=1": "location: patientlogin.html?valerrno=1");
+        return;
     }
 
     function secure($str){

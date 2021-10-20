@@ -1,3 +1,10 @@
+<?php
+if(isset($_SESSION["type"])){
+   if($_SESSION["type"]=="DOCTOR"){
+      header("location: doctorhome.html");
+      return;
+   }
+}
 <!DOCTYPE html>
 <html lang="">
    <head>

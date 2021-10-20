@@ -1,3 +1,18 @@
+<?php
+$err = '';
+if(isset($_GET["valerrno"])){
+  $n = $_GET["valerrno"];
+  if($n==0){
+    $err = "Please Enter your Email and Password";
+  }
+  if($n==1){
+    $err = "Email or Password Incorrect!";
+  }
+  if($n==3){
+    $err = "Account already Exists on this Email!";
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,9 +36,16 @@
 			<h1 id="title" class="hidden"><span id="logo">Doctor <span>Login</span></span></h1>
 		</div>
 		<div class="login-box animated fadeInUp">
+			<form action="login.php" method="POST">
 			<div class="box-header">
 				<h2>Log In</h2>
 			</div>
+			<?php 
+			require("methods.php");
+			if(!$err==""){
+				echo "<div style='padding:10px;color:red'>$err</div>";
+			}
+		?>
 			<label for="username">Email</label>
 			<br/>
 			<input type="text" id="username" name = "email">
@@ -31,10 +53,12 @@
 			<label for="password">Password</label>
 			<br/>
 			<input type="password" id="password" name="password">
+			<input type="hidden" name="type" value="DOCTOR"/>
 			<br/>
-			<button type="submit">Sign In</button>
+			<button type="submit" name="login_btn">Sign In</button>
 			<br/>
 			<a href="#"><p class="small">Forgot your password?</p></a>
+			</form>
 		</div>
 	</div>
 </body>
