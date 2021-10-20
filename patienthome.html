@@ -1,10 +1,15 @@
 <?php
-if(isset($_SESSION["type"])){
-   if($_SESSION["type"]=="DOCTOR"){
-      header("location: doctorhome.html");
+session_start();
+   if($_SESSION["hms_doctor"]){
+      echo $_SESSION["hms_doctor"];
+      header("location: doctorhome.html?".$_SERVER['QUERY_STRING']);
       return;
    }
-}
+   if($_SESSION["hms_admin"]){
+      header("location: adminhome.html?".$_SERVER['QUERY_STRING']);
+      return;
+   }
+?>
 <!DOCTYPE html>
 <html lang="">
    <head>

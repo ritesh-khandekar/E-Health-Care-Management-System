@@ -14,15 +14,19 @@
     }
     function islogin(){
         if(isset($_SESSION["hms_login"])){
+            return true;
+        }
+            
             if($_SESSION["hms_login"]){
                 foreach($_SESSION as $key=>$val){
                     if($val==""){
+                        echo $val;
                         return false;
                     }
                 }
                 return true;
             }
-        }
+        
         return false;
     }
 ?>
