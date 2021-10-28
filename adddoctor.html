@@ -1,3 +1,95 @@
+<?php
+
+$fname="";
+$lname="";
+$email="";
+$fees="";
+$phone="";
+$filename="";
+$spec="";
+$address="";
+$qual="";
+$formsubmit="add";
+$err = "";
+if(isset($_POST["formsubmit"])){
+   $fname = $_POST["fname"];
+   $lname = $_POST["lname"];
+   $email = $_POST["email"];
+   $fees = $_POST["fees"];
+   $phone = $_POST["phone"];
+   //$filename = $_POST["filename"];
+   $spec = $_POST["spec"];
+   $qual = $_POST["qual"];
+   $address = $_POST["address"];
+   $bool = true;
+   foreach($_POST as $key=>$val){
+  
+      if($val==""){
+         $bool = false;
+         echo $key;
+      }
+   }
+   if($bool){
+      $fees = (float) $fees;
+      $phone = (float) $phone;
+
+      $target_dir = "uploads/";
+      $target_file = $target_dir . basename(getRandomHex(10).$_FILES["filename"]["name"]);
+      $uploadOk = 1;
+      $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+      // Check if image file is a actual image or fake image
+      if(isset($_POST["formsubmit"])) {
+      $check = getimagesize($_FILES["filename"]["tmp_name"]);
+      if($check !== false) {
+         $err =  "File is an image - " . $check["mime"] . ".";
+         $uploadOk = 1;
+      } else {
+         $err =  "File is not an image.";
+         $uploadOk = 0;
+      }
+      }
+
+      // Check if file already exists
+      if (file_exists($target_file)) {
+      $err = "Sorry, file already exists.";
+      $uploadOk = 0;
+      }
+
+      // Check file size
+      if ($_FILES["filename"]["size"] > 500000) {
+      $err = "Sorry, your file is too large.";
+      $uploadOk = 0;
+      }
+
+      // Allow certain file formats
+      if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+      && $imageFileType != "gif" ) {
+      $err = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+      $uploadOk = 0;
+      }
+
+      // Check if $uploadOk is set to 0 by an error
+      if ($uploadOk == 0) {
+      $err = "Sorry, your file was not uploaded.";
+      // if everything is ok, try to upload file
+      } else {
+      if (move_uploaded_file($_FILES["filename"]["tmp_name"], $target_file)) {
+         header("location: adminhome.html?docadded");
+         //$err =  "The file ". htmlspecialchars( basename( $_FILES["filename"]["name"])). " has been uploaded.";
+      } else {
+         $err = "Sorry, there was an error uploading your file.";
+      }
+      }
+   }else{
+      $err = "Please fill all the details!";
+   }
+   
+}
+function getRandomHex($num_bytes=4) {
+   return bin2hex(openssl_random_pseudo_bytes($num_bytes));
+ }
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1225},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -15,7 +107,7 @@
       <link rel="stylesheet" href="https://editor.silex.me/static/2.12/front-end.css" data-silex-static="">
       <style type="text/css" class="silex-style">body .editable-style.column-section.container-element {padding: 0; margin: 0;}div.column-section {width: 100%; color: #33bbff;}div.column-section > a {width: 100%;}@media (min-width:481px) {.silex-editor div.column-section {padding: 50px 0;}div.column-section > a {width: 33.333%;}}</style>
       <script type="text/javascript" class="silex-script"></script>
-      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(152,170,225,1); position: static;}.silex-id-1478366444112-1 {background-color: rgba(255,255,255,1); min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: rgba(255,255,255,1); min-height: 92px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 350px; top: 5px; left: 49px; min-height: 141px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 732px; top: 24px; left: 462px; min-height: 66px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1634725938274-3 {width: 776.6666870117188px; min-height: 655px; background-color: rgb(255, 255, 255); position: absolute; top: 147px; left: 100px;}.silex-id-1634727392144-4 {width: 211px; height: 184px; position: absolute; top: 192.00000381469727px; left: 638px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
+      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(152,170,225,1); position: static;}.silex-id-1478366444112-1 {background-color: rgba(255,255,255,1); min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: rgba(255,255,255,1); min-height: 92px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 350px; top: 5px; left: 49px; min-height: 141px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 732px; top: 24px; left: 462px; min-height: 66px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1634725938274-3 {width: 776.6666870117188px; min-height: 655px; background-color: rgb(255, 255, 255); position: absolute; top: 147px; left: 100px;}.silex-id-1634727392144-4 {width: 200px;min-height: 200px;box-shadow: 1px 1px 3px #959595; position: absolute; top: 192.00000381469727px; left: 638px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
       <title></title>
       <link href="https://fontlibrary.org/face/glacial-indifference" rel="stylesheet" class="silex-custom-font">
       <style type="text/css" class="silex-style-settings">.website-width {width: 1225px;}@media (min-width: 481px) {.silex-editor {min-width: 1425px;}}</style>
@@ -256,16 +348,17 @@ init_1634725921096_801();
             </div>
          </div>
       </section><div data-silex-type="html-element" class="editable-style html-element silex-id-1634725938274-3 page-home paged-element" data-silex-id="silex-id-1634725938274-3" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<form>
+<form method="post" action=""  enctype="multipart/form-data">
    <div class="p-4">
+      
       <div class="form-row">
          <div class="col-md-4 mb-3">
             <label for="validationDefault01">First name</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="First name" required="">
+            <input type="text" value="<?= $fname ?>" name="fname" class="form-control" id="validationDefault01" placeholder="First name" required="">
          </div>
          <div class="col-md-4 mb-3">
             <label for="validationDefault02">Last name</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" required="">
+            <input type="text" value="<?= $lname ?>" name="lname" class="form-control" id="validationDefault02" placeholder="Last name" required="">
          </div>
       </div>
       <div class="col-md-8 mb-3">
@@ -274,45 +367,56 @@ init_1634725921096_801();
             <div class="input-group-prepend">
                <span class="input-group-text" id="inputGroupPrepend2">Email</span>
             </div>
-            <input type="text" class="form-control" id="validationDefaultUsername" placeholder="email@example.com" aria-describedby="inputGroupPrepend2" required="">
+            <input type="text" value="<?= $email ?>" name="email" class="form-control" id="validationDefaultUsername" placeholder="email@example.com" aria-describedby="inputGroupPrepend2" required="">
          </div>
       </div>
       <div class="form-row">
          <div class="col-md-4 mb-3">
             <label for="validationDefault01">Fees</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="eg. $100" value="" required="">
+            <input type="text" name="fees" class="form-control" id="validationDefault01" placeholder="eg. $100" value="<?= $fees ?>" required="">
          </div>
          <div class="col-md-4 mb-3">
             <label for="validationDefault02">Contact No.</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="0123456789" value="" required="">
+            <input type="text" name="phone" class="form-control" id="validationDefault02" placeholder="0123456789" value="<?= $phone ?>" required="">
          </div>
       </div>
       <div class="form-row">
          <div class="col-md-6 mb-3">
             <label>Upload image</label>
             <div class="custom-file">
-               <input type="file" accept="image/*" class="custom-file-input" id="inputGroupFile04">
+               <input type="file" name="filename" accept="image/*" class="custom-file-input" id="inputGroupFile04">
                <label class="custom-file-label" for="inputGroupFile04">Choose Image</label>
+               <script>
+                 let imgInp = document.querySelector("#inputGroupFile04");
+                  imgInp.onchange = evt => {
+  const [file] = imgInp.files
+  if (file) {
+    document.querySelector("#imgdoc").src = URL.createObjectURL(file)
+  }
+}
+               </script>
             </div>
          </div>
       </div>
     <div class="form-row">
          <div class="col-md-4 mb-3">
             <label for="validationDefault01">Qualification </label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="MD" value="" required="">
+            <input type="text" name="qual" class="form-control" id="validationDefault01" placeholder="MD" value="<?= $qual ?>" required="">
          </div>
         <div class="col-md-4 mb-3">
             <label for="validationDefault01">Doctor Specialization </label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="Eye" value="" required="">
+            <input type="text" name="spec" class="form-control" id="validationDefault01" placeholder="Eye" value="<?= $spec ?>" required="">
          </div>
       </div>
         <div class="form-row">
          <div class="col-md-8 mb-3">
             <label for="validationDefault01">Full Address: </label>
-            <textarea class="form-control" id="validationDefault01" required=""></textarea>
+            <textarea name="address" class="form-control" id="validationDefault01" required=""><?= $address ?></textarea>
          </div>
+         
         </div>
-      <button class="btn btn-primary" type="submit">Add Doctor</button>
+        <?= $err != '' ? '<div class="p-1 m-2 rounded w-50 bg-danger text-white mx-auto background-p">'.$err.'</div>':''?>
+      <button class="btn btn-primary p-3 mx-auto " name="formsubmit" value="add" type="submit">Add Doctor</button>
 
 </div></form></div></div><section data-silex-type="container-element" class="container-element editable-style section-element silex-id-1545056615878-13 prevent-resizable page-hotels paged-element" data-silex-id="silex-id-1545056615878-13">
          <div data-silex-type="container-element" class="editable-style container-element silex-element-content website-width silex-id-1545056615879-14" data-silex-id="silex-id-1545056615879-14">
@@ -323,4 +427,4 @@ init_1634725921096_801();
                ﻿﻿
             </div>
          </div>
-      </section><div data-silex-type="image-element" class="editable-style image-element silex-id-1634727392144-4 page-home paged-element" data-silex-id="silex-id-1634727392144-4" style=""><img src="500_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg"></div></body></html>
+      </section><div data-silex-type="image-element" class="editable-style image-element silex-id-1634727392144-4 page-home paged-element" data-silex-id="silex-id-1634727392144-4" style=""><img src="<?= $imgsrc ?>" id="imgdoc"></div></body></html>
