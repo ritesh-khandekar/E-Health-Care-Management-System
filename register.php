@@ -1,6 +1,6 @@
 <?php
 if(!isset($_POST["register"])) header("location: register.html");
-require("conn.php");
+    require("conn.php");
     $fname = secure($_POST["fname"]);
     $lname = secure($_POST["lname"]);
     $email = secure($_POST["email"]);
@@ -26,11 +26,14 @@ require("conn.php");
         header("location: register.html?valerrno=3");
         return;
     }
-    $q = "INSERT INTO users VALUES('','$fname','$lname','$email','$pass','$phone','$gender')";
+    $q = "INSERT INTO users VALUES('','$fname','$lname','$email','$pass','$phone','$gender','')";
+
     if($con->query($q)){
         login();
         header("location: home.html?success");
+        return;
     }
+    header("location: register.html")
     function login(){
         session_start();
         $_SESSION["hms_login"] = true;
