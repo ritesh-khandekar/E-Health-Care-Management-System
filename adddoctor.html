@@ -1,5 +1,5 @@
 <?php
-
+require("conn.php");
 $fname="";
 $lname="";
 $email="";
@@ -12,15 +12,15 @@ $qual="";
 $formsubmit="add";
 $err = "";
 if(isset($_POST["formsubmit"])){
-   $fname = $_POST["fname"];
-   $lname = $_POST["lname"];
-   $email = $_POST["email"];
-   $fees = $_POST["fees"];
-   $phone = $_POST["phone"];
-   //$filename = $_POST["filename"];
-   $spec = $_POST["spec"];
-   $qual = $_POST["qual"];
-   $address = $_POST["address"];
+   $fname = secure($_POST["fname"]);
+   $lname = secure($_POST["lname"]);
+   $email = secure($_POST["email"]);
+   $fees = secure($_POST["fees"]);
+   $phone = secure($_POST["phone"]);
+   //$filename = secure($_POST["filename"]);
+   $spec = secure($_POST["spec"]);
+   $qual = secure($_POST["qual"]);
+   $address = secure($_POST["address"]);
    $bool = true;
    foreach($_POST as $key=>$val){
   
@@ -31,7 +31,7 @@ if(isset($_POST["formsubmit"])){
    }
    if($bool){
       $fees = (float) $fees;
-      $phone = (float) $phone;
+      $phone = (int) $phone;
 
       $target_dir = "uploads/";
       $target_file = $target_dir . basename(getRandomHex(10).$_FILES["filename"]["name"]);
@@ -75,6 +75,9 @@ if(isset($_POST["formsubmit"])){
       // if everything is ok, try to upload file
       } else {
       if (move_uploaded_file($_FILES["filename"]["tmp_name"], $target_file)) {
+         $docid = getRandomHex(30);
+         $q = "INSERT INTO doctors VALUES ('','$docid','$fname','$lname','$address','$qual',$fees,$phone,'$email','$target_file','$spec',0)";
+         $con->query($q);
          header("location: adminhome.html?docadded");
          //$err =  "The file ". htmlspecialchars( basename( $_FILES["filename"]["name"])). " has been uploaded.";
       } else {
@@ -89,6 +92,11 @@ if(isset($_POST["formsubmit"])){
 function getRandomHex($num_bytes=4) {
    return bin2hex(openssl_random_pseudo_bytes($num_bytes));
  }
+ function secure($str){
+   global $con;
+   $str = mysqli_real_escape_string($con,$str);
+   return $str;
+}
 ?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
@@ -228,17 +236,15 @@ function getRandomHex($num_bytes=4) {
                <div class="silex-element-content normal">
                   <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
  <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
- <!--?php
- if($login):
- ?-->
+
  <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.html'">DASHBOARD</a>
  
  <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
  
- <!--?php else: ?--> 
+ <!---- 
 <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
 <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
-<!--?php endif  ?-->
+                  -->
 </p>
                </div>
             </div>
@@ -348,7 +354,7 @@ init_1634725921096_801();
             </div>
          </div>
       </section>
-      <h2 class="ml-3">ADD DOCTOR</h2>
+      <h2 class="ml-4 w-50">  ADD DOCTOR:</h2>
       <div data-silex-type="html-element" class="editable-style html-element silex-id-1634725938274-3 page-home paged-element" data-silex-id="silex-id-1634725938274-3" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <form method="post" action=""  enctype="multipart/form-data">
    <div class="p-4">
