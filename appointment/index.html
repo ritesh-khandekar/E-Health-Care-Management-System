@@ -1,3 +1,34 @@
+<?php
+if(!isset($_GET['doctorid'])) header("location: ../alldoctors.html");
+require("../conn.php");
+$docid = secure($_GET['doctorid']);
+$spec = secure($_GET['spec']);
+$q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
+$doc = $con->query($q);
+if(mysqli_num_rows($doc)<1){
+  header("location: ../alldoctors.html");
+  return;
+}
+$doctor=1;
+while($row=mysqli_fetch_array($doc)){
+$doctor = $row;
+}
+function secure($str){
+  global $con;
+  $str = mysqli_real_escape_string($con,$str);
+  return $str;
+}
+session_start();
+$login = false;
+if(isset($_SESSION["hms_login"])){
+  if($_SESSION["hms_admin"] || $_SESSION["hms_doctor"]){
+    header("location: ../alldoctors.html");
+  }
+   global $login;
+   $login = true;
+}
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,16 +58,16 @@
                         </div>
                         <div class="form-body">
                             <div class="row form-row">
-                              <select class="form-control disabled" disabled><option>Dr. Name</option></select>
+                              <select class="form-control disabled" disabled><option>Dr. <?=$doctor["name"].' '.$doctor["lname"]?></option></select>
                             </div>
                             <div class="row form-row">
-                              <input type="text" placeholder="Enter Full name" class="form-control">
+                              <input type="text" placeholder="Enter Full name" class="form-control" value="<?= $_SESSION['hms_login_fname'].' '.$_SESSION['hms_login_lname']?>">
                             </div>
                             <div class="row form-row">
-                              <input type="text" placeholder="Enter Mobile Number" class="form-control">
+                              <input type="text" placeholder="Enter Mobile Number" class="form-control" >
                             </div>
                              <div class="row form-row">
-                              <input type="text" placeholder="Enter Email Adreess" class="form-control">
+                              <input type="text" placeholder="Enter Email Adreess" class="form-control" value="<?= $_SESSION['hms_login_email']?>">
                             </div>
                            <div class="row form-row">
                               <input id="dat" type="text" placeholder="Appointment Date" class="form-control">

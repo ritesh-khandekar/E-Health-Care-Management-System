@@ -1,3 +1,14 @@
+<?php
+require("conn.php");
+require("methods.php");
+session_start();
+$login = false;
+if(islogin()){
+   global $login;
+   $login = true;
+}
+
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1197},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -84,32 +95,6 @@ window.location.href = "appointment/?doctor="+encodeURIComponent(div.querySelect
       transform 0.1s ease-in,
       background 0.1s ease-in;}.hamburger-menu_1635425971065_709.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1635425971065_709 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1635425971065_709.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1635425971065_709.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1635425971065_709 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1635425971065_709.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
 <!-- inspired by https://codepen.io/erikterwan/pen/EVzeRP -->
-<div class="hamburger-menu_1635425971065_709 closed">
-    <div class="hamburger-btn fixed">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-container">
-      <div class="prevent-scale">
-        <nav role="navigation" class="">
-            <ul>
-            
-                <li><a href="#!page-home" class="page-link-active">Home</a></li>
-            
-                <li><a href="#!page-vacations">Vacations</a></li>
-            
-                <li><a href="#!page-flights">Flights</a></li>
-            
-                <li><a href="#!page-hotels">Hotels</a></li>
-            
-                <li><a href="#!page-contact">Contact</a></li>
-            
-            </ul>
-        </nav>
-      </div>
-  </div>
-</div>
 <script>
 (function() {
   var isOpen = false;
@@ -148,17 +133,17 @@ window.location.href = "appointment/?doctor="+encodeURIComponent(div.querySelect
                <div class="silex-element-content normal">
                   <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
-                     <!--?php
+                     <?php
                      if($login):
-                     ?-->
+                     ?>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.html'">DASHBOARD</a>
                      
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
                      
-                     <!--?php else: ?--> 
+                     <?php else: ?> 
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
-                     <!--?php endif ?-->
+                     <?php endif ?>
                   </p>
                </div>
             </div>
@@ -277,33 +262,43 @@ init_1635425971142_557();
             </div>
          </div>
       </section><section data-silex-type="container-element" class="editable-style section-element silex-id-1635426126255-1 page-home paged-element" data-silex-id="silex-id-1635426126255-1"><div data-silex-type="container-element" class="editable-style container-element silex-id-1635426126256-2 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1635426126256-2" style=""><div data-silex-type="html-element" class="editable-style html-element silex-id-1635426066838-0 page-home paged-element" data-silex-id="silex-id-1635426066838-0" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<div class="row">
 
-   <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-         <img class="card-img-top" src="" alt="">
-         <div class="card-body">
-            <h4 class="card-text">Doctor Name</h4>
-            <p class="card-text">Fees: $7</p>
-         </div>
-      </div>
-   </div>
-   <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-         <img class="card-img-top" src="" alt="">
-         <div class="card-body">
-            <h4 class="card-text">Doctor Name</h4>
-            <p class="card-text">Fees: $7</p>
-         </div>
-      </div>
-   </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem;">
-         <img class="card-img-top" src="" alt="">
-         <div class="card-body">
-            <h4 class="card-text">Doctor Name</h4>
-            <p class="card-text">Fees: $7</p>
-         </div>
-      </div>
-   </div>
-</div></div></div></div></section></body></html>
+<?php
+$q = "SELECT * FROM DOCTORS ORDER BY POINTS DESC,ID DESC,FEES ASC";
+$res=$con->query($q);
+$n = mysqli_num_rows($res);
+if($n%3==0){
+   $n = 3;
+}else if($n%4==0){
+   $n = 4;
+}
+$i = 1;
+while($row=mysqli_fetch_array($res)){
+   if($i%$n == 0){
+      echo '<div class="row">';
+   }
+   echo '<div class="col-sm-4">';
+      echo '<summary class="card" style="width: 18rem;" onclick="window.location.href = \'info.html?doctorid='.$row["doc-id"].'\'">';
+         echo '<img class="card-img-top border-bottom border-primary" src="'.$row["imagesrc"].'" alt="">';
+         echo '<div class="card-body">';
+            echo '<h4 class="card-text">'.$row["name"].' '.$row["lname"].'</h4>';
+            echo '<p class="card-text">Fees: <b>₹'.$row["fees"].'</b></p>';
+         echo '</div>';
+      echo '</summary>';
+   echo '</div>';
+
+   if($i%$n == 0){
+      echo '</div>';
+   }
+}
+?>
+
+<style>
+.card:hover{
+     transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+</style>
+
+
+</div></div></div></section></body></html>

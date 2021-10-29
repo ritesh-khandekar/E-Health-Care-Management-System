@@ -1,3 +1,30 @@
+<?php
+if(!isset($_GET['doctorid'])) header("location: alldoctors.html");
+require("conn.php");
+$docid = secure($_GET['doctorid']);
+
+$q = "SELECT * FROM doctors WHERE `doc-id`='$docid'";
+$doc = $con->query($q);
+if(mysqli_num_rows($doc)<1){
+  header("location: alldoctors.html");
+  return;
+}
+$doctor=1;
+while($row=mysqli_fetch_array($doc)){
+$doctor = $row;
+}
+function secure($str){
+  global $con;
+  $str = mysqli_real_escape_string($con,$str);
+  return $str;
+}
+session_start();
+$login = false;
+if(isset($_SESSION["hms_login"])){
+   global $login;
+   $login = true;
+}
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1200},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -15,7 +42,7 @@
       <link rel="stylesheet" href="https://editor.silex.me/static/2.12/front-end.css" data-silex-static="">
       <style type="text/css" class="silex-style">body .editable-style.column-section.container-element {padding: 0; margin: 0; color: aliceblue;}div.column-section {width: 100%;}div.column-section > a {width: 100%;}@media (min-width:481px) {.silex-editor div.column-section {padding: 50px 0;}div.column-section > a {width: 33.333%;}}</style>
       <script type="text/javascript" class="silex-script"></script>
-      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(255,255,255,1); position: static;}.silex-id-1478366444112-1 {background-color: transparent; min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: transparent; min-height: 89px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 206px; top: 5px; left: 49px; min-height: 115.4375px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 664px; top: 17px; left: 535px; min-height: 55px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-element-content.normal a{cursor:pointer}.card:hover{box-shadow:1px 1px 3px #959595;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1633601431476-0 {position: static; background-color: rgba(209,235,255,1);}.silex-id-1633601431477-1 {min-height: 503.66668701171875px; background-color: transparent; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633601452249-2 {width: 340px; min-height: 76px; position: absolute; top: -1px; left: 31.999998092651367px;}.silex-id-1633601614284-3 {width: 360px; height: 240px; position: absolute; top: 75.00006103515625px; left: 39px;}.silex-id-1633601641321-4 {width: 557px; min-height: 346px; background-color: rgb(255, 255, 255); position: absolute; top: 75px; left: 483px;}.silex-id-1633601713437-5 {width: 260px; min-height: 66px; background-color: rgba(0,145,255,1); position: absolute; top: 354px; left: 87px;}.silex-id-1633601762339-6 {width: 223px; min-height: 69px; position: absolute; top: 0px; left: 18px;}.silex-id-1633601954163-7 {width: 557px; min-height: 100px; background-color: transparent; position: absolute; top: 0px; left: -0.00000762939453125px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
+      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(255,255,255,1); position: static;}.silex-id-1478366444112-1 {background-color: transparent; min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: transparent; min-height: 89px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 206px; top: 5px; left: 49px; min-height: 115.4375px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 664px; top: 17px; left: 535px; min-height: 55px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-element-content.normal a{cursor:pointer}.card:hover{box-shadow:1px 1px 3px #959595;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1633601431476-0 {position: static; background-color: rgba(209,235,255,1);}.silex-id-1633601431477-1 {min-height: 503.66668701171875px; background-color: transparent; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633601452249-2 {width: 340px; min-height: 76px; position: absolute; top: -1px; left: 31.999998092651367px;}.silex-id-1633601614284-3 {width: 250px;  position: absolute; top: 75.00006103515625px; left: 100px;}.silex-id-1633601641321-4 {width: 557px; min-height: 346px; background-color: rgb(255, 255, 255); position: absolute; top: 75px; left: 483px;}.silex-id-1633601713437-5 {width: 260px; min-height: 66px; background-color: rgba(0,145,255,1); position: absolute; top: 354px; left: 87px;}.silex-id-1633601762339-6 {width: 223px; min-height: 69px; position: absolute; top: 0px; left: 18px;}.silex-id-1633601954163-7 {width: 557px; min-height: 100px; background-color: transparent; position: absolute; top: 0px; left: -0.00000762939453125px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
       <title></title>
       <link href="https://fontlibrary.org/face/glacial-indifference" rel="stylesheet" class="silex-custom-font">
       <style type="text/css" class="silex-style-settings">.website-width {width: 1200px;}@media (min-width: 481px) {.silex-editor {min-width: 1400px;}}</style>
@@ -136,12 +163,20 @@
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
-                  <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
- <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
-<a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">DOCTORS</a>
-<a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
-<a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
-</p>
+                <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
+                  <?php
+                  if($login):
+                  ?>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.html'">DASHBOARD</a>
+                  
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
+                  
+                  <?php else: ?> 
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
+                  <?php endif ?>
+               </p>
                </div>
             </div>
          </div>
@@ -258,47 +293,47 @@ init_1633602787058_803();
                ﻿﻿
             </div>
          </div>
-      </section><section data-silex-type="container-element" class="editable-style section-element silex-id-1633601431476-0 page-home paged-element" data-silex-id="silex-id-1633601431476-0"><div data-silex-type="container-element" class="editable-style container-element silex-id-1633601431477-1 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1633601431477-1" style=""><div data-silex-type="image-element" class="editable-style image-element silex-id-1633601614284-3" data-silex-id="silex-id-1633601614284-3" style=""><img src="240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg"></div><div data-silex-type="container-element" class="editable-style container-element silex-id-1633601641321-4" data-silex-id="silex-id-1633601641321-4" style=""><div data-silex-type="html-element" class="editable-style html-element silex-id-1633601954163-7 silex-component-skill-bars" data-silex-id="silex-id-1633601954163-7" style=""><div class="silex-element-content">
+      </section><section data-silex-type="container-element" class="editable-style section-element silex-id-1633601431476-0 page-home paged-element" data-silex-id="silex-id-1633601431476-0"><div data-silex-type="container-element" class="editable-style container-element silex-id-1633601431477-1 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1633601431477-1" style=""><div data-silex-type="image-element" class="editable-style image-element silex-id-1633601614284-3" data-silex-id="silex-id-1633601614284-3" style=""><img src="<?=$doctor["imagesrc"]?>"></div><div data-silex-type="container-element" class="editable-style container-element silex-id-1633601641321-4" data-silex-id="silex-id-1633601641321-4" style=""><div data-silex-type="html-element" class="editable-style html-element silex-id-1633601954163-7 silex-component-skill-bars" data-silex-id="silex-id-1633601954163-7" style=""><div class="silex-element-content">
   <div class="skillbar clearfix " data-percent="0%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>NAME</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); width: 0px; overflow: hidden;"></div>
-    <div class="skill-bar-percent">{DR NAME}</div>
+    <div class="skill-bar-percent"><?=$doctor["name"].' '.$doctor["lname"]?></div>
   </div>
 
   <div class="skillbar clearfix " data-percent="0%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>Fees</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); width: 0px; overflow: hidden;"></div>
-    <div class="skill-bar-percent">800</div>
+    <div class="skill-bar-percent"> ₹<?=$doctor["fees"]?></div>
   </div>
 
   <div class="skillbar clearfix " data-percent="%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>Qualification</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); overflow: hidden;"></div>
-    <div class="skill-bar-percent">MD</div>
+    <div class="skill-bar-percent"><?=$doctor["qualification"]?></div>
   </div>
 
   <div class="skillbar clearfix " data-percent="%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>Specialization</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); overflow: hidden;"></div>
-    <div class="skill-bar-percent">Eye</div>
+    <div class="skill-bar-percent"><?=$doctor["spec"]?></div>
   </div>
 
   <div class="skillbar clearfix " data-percent="%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>Email ID</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); overflow: hidden;"></div>
-    <div class="skill-bar-percent">{DR EMAIL}</div>
+    <div class="skill-bar-percent"><?=$doctor["email"]?></div>
   </div>
 
   <div class="skillbar clearfix " data-percent="%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>Contact No</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); overflow: hidden;"></div>
-    <div class="skill-bar-percent">0000000000</div>
+    <div class="skill-bar-percent"><?=$doctor["phone"]?></div>
   </div>
 
   <div class="skillbar clearfix " data-percent="%">
     <div class="skillbar-title" style="background: #6adcfa;"><span>Address</span></div>
     <div class="skillbar-bar" style="background-color: rgb(106, 220, 250); overflow: hidden;"></div>
-    <div class="skill-bar-percent">Mumbai</div>
+    <div class="skill-bar-percent"><?=$doctor["address"]?></div>
   </div>
 
 <style type="text/css">.skillbar {position: relative; display: block; margin-bottom: 15px; width: 100%; background: #eee; height: 35px; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; -webkit-transition: 0.4s linear; -moz-transition: 0.4s linear; -ms-transition: 0.4s linear; -o-transition: 0.4s linear; transition: 0.4s linear; -webkit-transition-property: width, background-color; -moz-transition-property: width, background-color; -ms-transition-property: width, background-color; -o-transition-property: width, background-color; transition-property: width, background-color;}.skillbar-title {position: relative; float: left; width: 40%; font-weight: bold; font-size: 13px; color: #ffffff; background: #6adcfa; -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 4px; -moz-border-radius-topleft: 3px; -moz-border-radius-bottomleft: 3px; border-top-left-radius: 3px; border-bottom-left-radius: 3px;}.skillbar-title span {display: block; text-align: center; background: rgba(0, 0, 0, 0.1); height: 35px; line-height: 35px; -webkit-border-top-left-radius: 3px; -webkit-border-bottom-left-radius: 3px; -moz-border-radius-topleft: 3px; -moz-border-radius-bottomleft: 3px; border-top-left-radius: 3px; border-bottom-left-radius: 3px;}.skillbar-bar {float: left; height: 35px; width: 0px; border-radius: 0 3px 3px 0; -moz-border-radius: 0 3px 3px 0; -webkit-border-radius: 0 3px 3px 0;}.skill-bar-percent {position: absolute; right: 10px; top: 0; font-size: 11px; height: 35px; line-height: 35px; color: rgba(0, 0, 0, 0.4);}</style>
@@ -317,8 +352,8 @@ init_1633602787058_803();
     }
   });
 </script>
-</div></div></div><div data-silex-type="container-element" class="editable-style container-element silex-id-1633601713437-5" data-silex-id="silex-id-1633601713437-5" style=""><div data-silex-type="text-element" class="editable-style text-element silex-id-1633601762339-6" data-silex-id="silex-id-1633601762339-6" style="" href="null"><div class="silex-element-content normal"><h2 style="color:white">BOOK APPOINTMENT</h2><span class="_wysihtml-temp-caret-fix" style="position: absolute; display: block; min-width: 1px; z-index: 99999;">﻿</span></div></div></div><div data-silex-type="text-element" class="editable-style text-element silex-id-1633601452249-2" data-silex-id="silex-id-1633601452249-2" style="" href="null"><div class="silex-element-content normal"><h3><b>Details of {DR NAME}:</b></h3><span class="_wysihtml-temp-caret-fix" style="position: absolute; display: block; min-width: 1px; z-index: 99999;">﻿</span></div></div></div></section>
+</div></div></div><div data-silex-type="container-element" class="editable-style container-element silex-id-1633601713437-5" data-silex-id="silex-id-1633601713437-5" style=""><div data-silex-type="text-element" class="editable-style text-element silex-id-1633601762339-6" data-silex-id="silex-id-1633601762339-6" style="" href="null"><div class="silex-element-content normal"><h2 style="color:white">BOOK APPOINTMENT</h2><span class="_wysihtml-temp-caret-fix" style="position: absolute; display: block; min-width: 1px; z-index: 99999;">﻿</span></div></div></div><div data-silex-type="text-element" class="editable-style text-element silex-id-1633601452249-2" data-silex-id="silex-id-1633601452249-2" style="" href="null"><div class="silex-element-content normal"><h3><b>Details of Dr. <?=$doctor["name"].' '.$doctor["lname"]?>:</b></h3><span class="_wysihtml-temp-caret-fix" style="position: absolute; display: block; min-width: 1px; z-index: 99999;">﻿</span></div></div></div></section>
 <script>
-document.querySelector(".editable-style.text-element.silex-id-1633601762339-6").addEventListener("click",function(){window.location.href = "appointment/?doctor="+encodeURIComponent(document.querySelector(".silex-id-1633601954163-7").querySelector(".skill-bar-percent").textContent)+"&spec="+encodeURIComponent(document.querySelector(".silex-id-1633601954163-7").querySelectorAll(".skill-bar-percent")[3].textContent);});
+document.querySelector(".editable-style.text-element.silex-id-1633601762339-6").addEventListener("click",function(){window.location.href = "appointment/?doctor="+encodeURIComponent(document.querySelector(".silex-id-1633601954163-7").querySelector(".skill-bar-percent").textContent)+"&doctorid=<?=$doctor["doc-id"]?>&spec="+encodeURIComponent(document.querySelector(".silex-id-1633601954163-7").querySelectorAll(".skill-bar-percent")[3].textContent);});
 </script>
 </body></html>

@@ -7,6 +7,7 @@ $fees="";
 $phone="";
 $filename="";
 $spec="";
+$pass="";
 $address="";
 $qual="";
 $formsubmit="add";
@@ -21,6 +22,7 @@ if(isset($_POST["formsubmit"])){
    $spec = secure($_POST["spec"]);
    $qual = secure($_POST["qual"]);
    $address = secure($_POST["address"]);
+   $pass = secure($_POST["pass"]);
    $bool = true;
    foreach($_POST as $key=>$val){
   
@@ -77,6 +79,8 @@ if(isset($_POST["formsubmit"])){
       if (move_uploaded_file($_FILES["filename"]["tmp_name"], $target_file)) {
          $docid = getRandomHex(30);
          $q = "INSERT INTO doctors VALUES ('','$docid','$fname','$lname','$address','$qual',$fees,$phone,'$email','$target_file','$spec',0)";
+         $con->query($q);
+         $q = "INSERT INTO users VALUES('','$fname','$lname','$email','$pass','$phone','','DOCTOR','$docid')";
          $con->query($q);
          header("location: adminhome.html?docadded");
          //$err =  "The file ". htmlspecialchars( basename( $_FILES["filename"]["name"])). " has been uploaded.";
@@ -414,6 +418,10 @@ init_1634725921096_801();
         <div class="col-md-4 mb-3">
             <label for="validationDefault01">Doctor Specialization </label>
             <input type="text" name="spec" class="form-control" id="validationDefault01" placeholder="Eye" value="<?= $spec ?>" required="">
+         </div>
+         <div class="col-md-4 mb-3">
+            <label for="validationDefaultn">Password to login: </label>
+            <input type="text" name="pass" class="form-control" id="validationDefaultn" placeholder="Password" value="<?= '' ?>" required="">
          </div>
       </div>
         <div class="form-row">
