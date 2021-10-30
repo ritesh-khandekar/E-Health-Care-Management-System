@@ -1,4 +1,13 @@
 <?php
+session_start();
+$login = false;
+if(isset($_SESSION["hms_login"])){
+  if($_SESSION["hms_admin"] || $_SESSION["hms_doctor"]){
+    header("location: ../alldoctors.html");
+  }
+   global $login;
+   $login = true;
+}
 if(!isset($_GET['doctorid'])) header("location: ../alldoctors.html");
 require("../conn.php");
 $docid = secure($_GET['doctorid']);
@@ -18,15 +27,7 @@ function secure($str){
   $str = mysqli_real_escape_string($con,$str);
   return $str;
 }
-session_start();
-$login = false;
-if(isset($_SESSION["hms_login"])){
-  if($_SESSION["hms_admin"] || $_SESSION["hms_doctor"]){
-    header("location: ../alldoctors.html");
-  }
-   global $login;
-   $login = true;
-}
+
 ?>
 
 <!doctype html>
@@ -46,9 +47,12 @@ if(isset($_SESSION["hms_login"])){
             <div class="row no-margin">
                 <div class="col-sm-7">
                     <div class="content">
-                        <h1>Book You Slot Now and Save your time</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis at lacus at rhoncus. Integer pharetra lacus vitae sapien blandit eleifend. </p>
-                        <h2>For Help Call : +###-###-####</h2>
+                        <h2>Book You Slot Now and Save your time</h2>
+                        <img src="../<?=$doctor["imagesrc"]?>" height="300px">
+                        <p>Qualification:  <?=$doctor["qualification"]?></p>
+                        <p>Specialization:  <?=$doctor["spec"]?></p>
+                        <p>Book Appointemnt with Dr. <?=$doctor["name"].' '.$doctor["lname"]?></p>
+                        <h3>For Help Call : +###-###-####</h3>
                     </div>
                 </div>
                 <div class="col-sm-5">
@@ -94,7 +98,7 @@ if(isset($_SESSION["hms_login"])){
 
                              <div class="row form-row">
                                <button class="btn btn-success btn-appointment">
-                                Book Appointment<br> <b>Total: 0$</b> 
+                                Book Appointment<br> <b>Total:  ₹<?=$doctor["fees"]?></b> 
                                </button>
                                
                             </div>
