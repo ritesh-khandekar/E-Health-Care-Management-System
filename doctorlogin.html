@@ -55,6 +55,8 @@ if(isset($_GET["valerrno"])){
 			<input type="password" id="password" name="password">
 			<input type="hidden" name="type" value="DOCTOR"/>
 			<br/>
+			<input type="hidden" name="next" value="<?=isset($_GET["next"])?$_GET["next"]:''?>">
+			
 			<button type="submit" name="login_btn">Sign In</button>
 			<br/>
 			<a href="#"><p class="small">Forgot your password?</p></a>

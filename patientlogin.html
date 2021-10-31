@@ -53,6 +53,7 @@ if(isset($_GET["valerrno"])){
 			<br/>
 			<input type="password" id="password" name="password">
 			<br/>
+			<input type="hidden" name="next" value="<?=isset($_GET["next"])?$_GET["next"]:''?>">
 			<button type="submit" name="login_btn">Sign In</button>
 			<br/></form>
 			<a href="#"><p class="small">Forgot your password?</p></a>

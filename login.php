@@ -2,13 +2,15 @@
 if(!isset($_POST["login_btn"])) return;
 
 $type = isset($_POST["type"]) ? $_POST["type"]: "";
-
+$nexturl = isset($_POST["next"])?($_POST["next"]!=''? $_POST["next"]:''):'';
+$next = urlencode($nexturl);
     $email = secure($_POST["email"]);
     $pass = secure($_POST["password"]);
    
     if($email=="" || $pass==""){
-        if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=0");return;};
-        header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=0": "location: patientlogin.html?valerrno=0");
+
+        if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=0&next=$next");return;};
+        header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=0&next=$next": "location: patientlogin.html?valerrno=0&next=$next");
         return;
     }
     require("conn.php");
@@ -24,11 +26,12 @@ $type = isset($_POST["type"]) ? $_POST["type"]: "";
             $type = $row["type"];
         }
         login($fname,$lname,$email,$gender,$type=="DOCTOR",$type=="ADMIN");
+        if($next!='') {header("location: $nexturl");return;}
         header("location: patienthome.html?success");
         return;
     }else{
-        if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=1");return;};
-        header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=1": "location: patientlogin.html?valerrno=1");
+        if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=1&next=$next");return;};
+        header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=1&next=$next": "location: patientlogin.html?valerrno=1&next=$next");
         return;
     }
 

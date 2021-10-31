@@ -8,7 +8,7 @@ if(isset($_SESSION["hms_login"])){
    global $login;
    $login = true;
 }else{
-  header("location: ../login.html");
+  header("location: ../login.html?next=".urlencode($_SERVER["HTTP_REFERER"]));
 
 }
 if(!isset($_GET['doctorid'])) header("location: ../alldoctors.html");
