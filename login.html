@@ -1,19 +1,7 @@
-<?php
-require("methods.php");
-session_start();
-$login = false;
-if(islogin()){
-   global $login;
-   $login = true;
-}
-?>
-<!DOCTYPE html>
-<html lang="">
-   <head>
-      <script type="text/javascript" class="silex-json-styles" data-silex-static="">
-         window.silex = window.silex || {}
-         window.silex.data = {"site":{"width":1197},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}
-      </script>
+<!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
+    window.silex = window.silex || {}
+    window.silex.data = {"site":{"width":1197},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
+      
       <meta charset="UTF-8">
       <!-- generator meta tag -->
       <!-- leave this for stats and Silex version check -->
@@ -27,7 +15,7 @@ if(islogin()){
       <link rel="stylesheet" href="https://editor.silex.me/static/2.12/front-end.css" data-silex-static="">
       <style type="text/css" class="silex-style">body .editable-style.column-section.container-element {padding: 0; margin: 0;}div.column-section {width: 100%; color: #33bbff;}div.column-section > a {width: 100%;}@media (min-width:481px) {.silex-editor div.column-section {padding: 50px 0;}div.column-section > a {width: 33.333%;}}</style>
       <script type="text/javascript" class="silex-script"></script>
-      <style class="silex-inline-styles" type="text/css">.editable-style.container-element.silex-id-1633603826436-5.silex-element-content.website-width.prevent-draggable div{cursor:pointer;}.editable-style.silex-id-1537543262916-6.text-element.header.hide-on-mobile a{cursor:pointer;}.body-initial {background-color: rgba(255,255,255,1); position: static;}.silex-id-1478366444112-1 {background-color: transparent; min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: transparent; min-height: 95px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 206px; top: 5px; left: 49px; min-height: 115.4375px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 664px; top: 17px; left: 534px; min-height: 55px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1633603826435-4 {position: static;}.silex-id-1633603826436-5 {min-height: 567px; background-color: rgba(246,247,249,0.5019607843137255); position: relative; margin-left: auto; margin-right: auto; background-image: linear-gradient(rgba(0,147,173,0.7),rgba(0,147,173,0.7)), url("background.jpg");}.silex-id-1633668112564-0 {width: 343px; min-height: 110px; background-color: rgba(29,138,205,0.8); position: absolute; top: 43.25px; left: 803.65625px;}.silex-id-1633668545156-1 {width: 343px; min-height: 110px; background-color: rgba(29,130,205,0.8); position: absolute; top: 302px; left: 804.1044921875px;}.silex-id-1633668668701-3 {width: 274px; min-height: 95px; position: absolute; top: 21.989585876464844px; left: 74.98956298828125px;}.silex-id-1633668772180-4 {width: 274px; min-height: 95px; position: absolute; top: 15px; left: 48.32293701171875px;}.silex-id-1633678680651-0:hover{box-shadow: 1px 1px 3px #959595;}.silex-id-1633668112564-0:hover{box-shadow: 1px 1px 3px #959595;}.silex-id-1633668545156-1:hover{box-shadow: 1px 1px 3px #959595;}.silex-id-1633678680651-0 {width: 343px; min-height: 110px; background-color: rgba(29,138,205,0.8); position: absolute; top: 173px; left: 803.9067687988281px;}.silex-id-1633678680652-1 {width: 274px; min-height: 95px; position: absolute; top: 19.989593505859375px; left: 94.98956298828125px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
+      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(255,255,255,1); position: static;}.silex-id-1478366444112-1 {background-color: transparent; min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: transparent; min-height: 95px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 206px; top: 5px; left: 49px; min-height: 115.4375px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 664px; top: 17px; left: 534px; min-height: 55px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1633603826435-4 {position: static;}.silex-id-1633603826436-5 {min-height: 567px; background-color: rgba(246,247,249,0.5019607843137255); position: relative; margin-left: auto; margin-right: auto; background-image: url(background.jpg);}.silex-id-1633668112564-0 {width: 343px; min-height: 110px; background-color: rgba(29,138,205,0.8); position: absolute; top: 37.25px; left: 508.937744140625px;}.silex-id-1633668545156-1 {width: 343px; min-height: 110px; background-color: rgba(29,130,205,0.8); position: absolute; top: 319px; left: 509.010986328125px;}.silex-id-1633668668701-3 {width: 274px; min-height: 95px; position: absolute; top: 21.989585876464844px; left: 74.98956298828125px;}.silex-id-1633668772180-4 {width: 274px; min-height: 95px; position: absolute; top: 15px; left: 48.32293701171875px;}.silex-id-1633678680651-0 {width: 343px; min-height: 110px; background-color: rgba(29,138,205,0.8); position: absolute; top: 177px; left: 509.1147766113281px;}.silex-id-1633678680652-1 {width: 274px; min-height: 95px; position: absolute; top: 19.989593505859375px; left: 94.98956298828125px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
       <title></title>
       <link href="https://fontlibrary.org/face/glacial-indifference" rel="stylesheet" class="silex-custom-font">
       <style type="text/css" class="silex-style-settings">.website-width {width: 1197px;}@media (min-width: 481px) {.silex-editor {min-width: 1397px;}}</style>
@@ -73,61 +61,84 @@ if(islogin()){
                </div>
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1552765147494-1 text-element silex-component prevent-resizable hide-on-desktop hamburger-menu prevent-auto-z-index" data-silex-id="silex-id-1552765147494-1">
-               <div class="silex-element-content normal">
-                  <style>.hamburger-menu_1633678667973_348 {position: absolute; z-index: 20;}.silex-editor .hamburger-menu_1633678667973_348 nav {left: -9999px;}.hamburger-menu_1633678667973_348 nav ul {margin-top: 80px;}.hamburger-menu_1633678667973_348 nav {opacity: 0; position: absolute; background-color: #ededed; transition: left 1s ease, height 0s ease 1s; left: -300px; width: 300px; height: 20px;}.hamburger-menu_1633678667973_348.open nav {opacity: 1; height: 100vh; left: 0; transition: left 1s ease, height 0s ease 0s;}.hamburger-menu_1633678667973_348 .nav-container {z-index: 10; position: absolute;}.hamburger-menu_1633678667973_348.open .nav-container {}.hamburger-menu_1633678667973_348 .hamburger-btn {z-index: 20; cursor: pointer; position: absolute;}.hamburger-menu_1633678667973_348 .hamburger-btn span {display: block; width: 30px; height: 5px; margin-bottom: 3px; position: relative; background-color: #000000; border: 1px solid #ffffff; border-radius: 3px; transition: border-color 0.1s ease-in,
-                     opacity 0.1s ease-in,
-                     transform 0.1s ease-in,
-                     background 0.1s ease-in;}.hamburger-menu_1633678667973_348.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1633678667973_348 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1633678667973_348.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1633678667973_348.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1633678667973_348 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1633678667973_348.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}
-                  </style>
-                  <!-- inspired by https://codepen.io/erikterwan/pen/EVzeRP -->
-                  
-                  <script>
-                     (function() {
-                       var isOpen = false;
-                       function close() {
-                         isOpen = false;
-                         $('.hamburger-menu_1633678667973_348').removeClass('open');
-                         $('.hamburger-menu_1633678667973_348').addClass('closed');
-                       }
-                       function open() {
-                         isOpen = true;
-                         $('.hamburger-menu_1633678667973_348').addClass('open');
-                         $('.hamburger-menu_1633678667973_348').removeClass('closed');
-                       }
-                       function toggle() {
-                         if(isOpen) close();
-                         else open();
-                       }
-                       var silexElement = $('.hamburger-menu_1633678667973_348').closest('.editable-style');
-                       function move(data) {
-                         var offset = silexElement.offset();
-                         $('.hamburger-menu_1633678667973_348 .nav-container').css({
-                           'transform': 'translate(' + (data.scrollLeft - (offset.left/data.scale)) + 'px, ' + (data.scrollTop - (offset.top/data.scale)) + 'px)'
-                         });
-                       }
-                       $('.hamburger-menu_1633678667973_348 .hamburger-btn').click(function() { toggle(); });
-                       $(document).on('silex.scroll silex.resize', function(e) {
-                         close();
-                         move(window.silex);
-                       });
-                       close();
-                     })();
-                  </script>
-               </div>
+               <div class="silex-element-content normal"><style>.hamburger-menu_1635673150099_229 {position: absolute; z-index: 20;}.silex-editor .hamburger-menu_1635673150099_229 nav {left: -9999px;}.hamburger-menu_1635673150099_229 nav ul {margin-top: 80px;}.hamburger-menu_1635673150099_229 nav {opacity: 0; position: absolute; background-color: #ededed; transition: left 1s ease, height 0s ease 1s; left: -300px; width: 300px; height: 20px;}.hamburger-menu_1635673150099_229.open nav {opacity: 1; height: 100vh; left: 0; transition: left 1s ease, height 0s ease 0s;}.hamburger-menu_1635673150099_229 .nav-container {z-index: 10; position: absolute;}.hamburger-menu_1635673150099_229.open .nav-container {}.hamburger-menu_1635673150099_229 .hamburger-btn {z-index: 20; cursor: pointer; position: absolute;}.hamburger-menu_1635673150099_229 .hamburger-btn span {display: block; width: 30px; height: 5px; margin-bottom: 3px; position: relative; background-color: #000000; border: 1px solid #ffffff; border-radius: 3px; transition: border-color 0.1s ease-in,
+      opacity 0.1s ease-in,
+      transform 0.1s ease-in,
+      background 0.1s ease-in;}.hamburger-menu_1635673150099_229.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1635673150099_229 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1635673150099_229.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1635673150099_229.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1635673150099_229 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1635673150099_229.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
+<!-- inspired by https://codepen.io/erikterwan/pen/EVzeRP -->
+<div class="hamburger-menu_1635673150099_229 closed">
+    <div class="hamburger-btn fixed">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="nav-container">
+      <div class="prevent-scale">
+        <nav role="navigation" class="">
+            <ul>
+            
+                <li><a href="#!page-home">Home</a></li>
+            
+                <li><a href="#!page-vacations">Vacations</a></li>
+            
+                <li><a href="#!page-flights">Flights</a></li>
+            
+                <li><a href="#!page-hotels">Hotels</a></li>
+            
+                <li><a href="#!page-contact">Contact</a></li>
+            
+            </ul>
+        </nav>
+      </div>
+  </div>
+</div>
+<script>
+(function() {
+  var isOpen = false;
+  function close() {
+    isOpen = false;
+    $('.hamburger-menu_1635673150099_229').removeClass('open');
+    $('.hamburger-menu_1635673150099_229').addClass('closed');
+  }
+  function open() {
+    isOpen = true;
+    $('.hamburger-menu_1635673150099_229').addClass('open');
+    $('.hamburger-menu_1635673150099_229').removeClass('closed');
+  }
+  function toggle() {
+    if(isOpen) close();
+    else open();
+  }
+  var silexElement = $('.hamburger-menu_1635673150099_229').closest('.editable-style');
+  function move(data) {
+    var offset = silexElement.offset();
+    $('.hamburger-menu_1635673150099_229 .nav-container').css({
+      'transform': 'translate(' + (data.scrollLeft - (offset.left/data.scale)) + 'px, ' + (data.scrollTop - (offset.top/data.scale)) + 'px)'
+    });
+  }
+  $('.hamburger-menu_1635673150099_229 .hamburger-btn').click(function() { toggle(); });
+  $(document).on('silex.scroll silex.resize', function(e) {
+    close();
+    move(window.silex);
+  });
+  close();
+})();
+</script>
+</div>
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
                   <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
-                     <?php
+                     <!--?php
                      if($login):
-                     ?>
+                     ?-->
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
                      
-                     <?php else: ?> 
+                     <!--?php else: ?--> 
                      <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
-                     <?php endif ?>
+                     <!--?php endif ?-->
                   </p>
                </div>
             </div>
@@ -142,87 +153,81 @@ if(islogin()){
                ﻿﻿
             </div>
             <div data-silex-type="html-element" class="editable-style silex-id-1548870370847-0 html-element silex-component silex-component-map silex-use-height-not-minheight silex-element-content-full-height" data-silex-id="silex-id-1548870370847-0">
-               <div class="silex-element-content">
-                  <div id="mapdiv_1633678667986_678" class="map">
-                     <div class="ol-viewport" style="position: relative; overflow: hidden; width: 100%; height: 100%;">
-                        <div class="ol-unselectable ol-layers" style="position: absolute; width: 100%; height: 100%; z-index: 0; display: none;"></div>
-                        <div class="ol-overlaycontainer" style="position: absolute; z-index: 0; width: 100%; height: 100%;"></div>
-                        <div class="ol-overlaycontainer-stopevent" style="position: absolute; z-index: 0; width: 100%; height: 100%;">
-                           <div class="ol-zoom ol-unselectable ol-control"><button class="ol-zoom-in" type="button" title="Zoom in">+</button><button class="ol-zoom-out" type="button" title="Zoom out">−</button></div>
-                           <div class="ol-rotate ol-unselectable ol-control ol-hidden"><button class="ol-rotate-reset" type="button" title="Reset rotation"><span class="ol-compass">⇧</span></button></div>
-                           <div class="ol-attribution ol-unselectable ol-control ol-collapsed" style="display: none;">
-                              <ul></ul>
-                              <button type="button" title="Attributions"><span>i</span></button>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <style>#mapdiv_1633678667986_678 {width: 100%; height: 100%;}</style>
-                  <script>
-                     function init_1633678667986_678() {
-                         if(typeof(ol) === 'undefined') {
-                             // console.warn('Map not ready, restart later')
-                             // wait for dependencies to be loaded
-                             setTimeout(init_1633678667986_678, 1000);
-                             return;
-                         }
-                     
-                         // empty the div before adding the map again
-                         $('#mapdiv_1633678667986_678').empty();
-                     
-                         // apply position and zoom
-                         // from map URL http://www.openstreetmap.org/#map=18/48.88680/2.34235&layers=C
-                         // var params = 'http://www.openstreetmap.org/#map=18/48.87378/2.29489&layers=C'.match(/.*map=([0-9]*)\/(.*)\/(.*)&layers=(.)/);
-                         var params = 'http://www.openstreetmap.org/#map=18/48.87378/2.29489&layers=C'.match(/.*map=([0-9]*)\/(.*)\/(.*)/);
-                         if(params) {
-                             var zoom = parseFloat(params[1]);
-                             var lat = parseFloat(params[2]);
-                             var lon = parseFloat(params[3]);
-                             // var layer = params[4] || 'S';
-                             var center = ol.proj.fromLonLat([lon, lat]);
-                             var map = new ol.Map({
-                               layers: [
-                                 new ol.layer.Tile({
-                                   source: new ol.source.OSM()
-                                 })
-                               ],
-                               target: 'mapdiv_1633678667986_678',
-                               view: new ol.View({
-                                 center: center,
-                                 zoom: zoom
-                               })
-                             });
-                             
-                         }
-                     }
-                     init_1633678667986_678();
-                     // $(document).on('silex.resize', function() {
-                     //     $('#mapdiv_1633678667986_678').empty();
-                     //     init_1633678667986_678();
-                     // });
-                     
-                  </script>
-               </div>
+               <div class="silex-element-content"><div id="mapdiv_1635673150046_600" class="map"><div class="ol-viewport" style="position: relative; overflow: hidden; width: 100%; height: 100%;"><div class="ol-unselectable ol-layers" style="position: absolute; width: 100%; height: 100%; z-index: 0; display: none;"></div><div class="ol-overlaycontainer" style="position: absolute; z-index: 0; width: 100%; height: 100%;"></div><div class="ol-overlaycontainer-stopevent" style="position: absolute; z-index: 0; width: 100%; height: 100%;"><div class="ol-zoom ol-unselectable ol-control"><button class="ol-zoom-in" type="button" title="Zoom in">+</button><button class="ol-zoom-out" type="button" title="Zoom out">−</button></div><div class="ol-rotate ol-unselectable ol-control ol-hidden"><button class="ol-rotate-reset" type="button" title="Reset rotation"><span class="ol-compass">⇧</span></button></div><div class="ol-attribution ol-unselectable ol-control ol-collapsed" style="display: none;"><ul></ul><button type="button" title="Attributions"><span>i</span></button></div></div></div></div>
+<style>#mapdiv_1635673150046_600 {width: 100%; height: 100%;}</style>
+<script>
+
+
+function init_1635673150046_600() {
+    if(typeof(ol) === 'undefined') {
+        // console.warn('Map not ready, restart later')
+        // wait for dependencies to be loaded
+        setTimeout(init_1635673150046_600, 1000);
+        return;
+    }
+
+    // empty the div before adding the map again
+    $('#mapdiv_1635673150046_600').empty();
+
+    // apply position and zoom
+    // from map URL http://www.openstreetmap.org/#map=18/48.88680/2.34235&layers=C
+    // var params = 'http://www.openstreetmap.org/#map=18/48.87378/2.29489&layers=C'.match(/.*map=([0-9]*)\/(.*)\/(.*)&layers=(.)/);
+    var params = 'http://www.openstreetmap.org/#map=18/48.87378/2.29489&layers=C'.match(/.*map=([0-9]*)\/(.*)\/(.*)/);
+    if(params) {
+        var zoom = parseFloat(params[1]);
+        var lat = parseFloat(params[2]);
+        var lon = parseFloat(params[3]);
+        // var layer = params[4] || 'S';
+        var center = ol.proj.fromLonLat([lon, lat]);
+        var map = new ol.Map({
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          target: 'mapdiv_1635673150046_600',
+          view: new ol.View({
+            center: center,
+            zoom: zoom
+          })
+        });
+        
+    }
+}
+init_1635673150046_600();
+// $(document).on('silex.resize', function() {
+//     $('#mapdiv_1635673150046_600').empty();
+//     init_1635673150046_600();
+// });
+
+</script>
+</div>
             </div>
             <div data-silex-type="html-element" class="editable-style silex-id-1548871340538-0 html-element silex-component silex-component-form silex-use-height-not-minheight silex-element-content-full-height" data-silex-id="silex-id-1548871340538-0">
-               <div class="silex-element-content">
-                  <form id="id_1633678667989_562" action="https://formspree.io/your@email.com" method="POST">
-                     <div>
-                        <label for="field1">Name</label>
-                        <input type="text" required="" id="field1" name="field1" placeholder="Your name">
-                     </div>
-                     <div>
-                        <label for="field2">Your email adress</label>
-                        <input type="text" required="" id="field2" name="field2" placeholder="your@email.com">
-                     </div>
-                     <div class="fill-vertical">
-                        <label for="field3">Your message</label>
-                        <textarea required="" id="field3" name="field3" placeholder="What you have to say"></textarea>
-                     </div>
-                     <input type="submit" value="Send">
-                  </form>
-                  <style>#id_1633678667989_562 input[type=text], select {width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;}#id_1633678667989_562 input[type=submit] {width: 100%; background-color: #F78536; color: #FFFFFF; padding: 14px 20px; margin: 8px 0; border: 1px solid; border-radius: 3px; cursor: pointer;}#id_1633678667989_562 label {color: #000000;}#id_1633678667989_562 .fill-vertical {flex: 1 1 auto; display: flex; flex-direction: column;}#id_1633678667989_562 .fill-vertical textarea {flex: 1 1 auto; width: 100%; height: 150px; padding: 12px 20px; box-sizing: border-box; border: 2px solid #ccc; border-radius: 3px; background-color: #f8f8f8; font-size: 16px; resize: none;}#id_1633678667989_562 {border-radius: 3px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;}</style>
-               </div>
+               <div class="silex-element-content"><form id="id_1635673150054_714" action="https://formspree.io/your@email.com" method="POST">
+  
+  <div>
+    <label for="field1">Name</label>
+    <input type="text" required="" id="field1" name="field1" placeholder="Your name">
+  </div>
+  
+  
+  <div>
+    <label for="field2">Your email adress</label>
+    <input type="text" required="" id="field2" name="field2" placeholder="your@email.com">
+  </div>
+  
+  
+  <div class="fill-vertical">
+    <label for="field3">Your message</label>
+    <textarea required="" id="field3" name="field3" placeholder="What you have to say"></textarea>
+  </div>
+  
+  <input type="submit" value="Send">
+</form>
+<style>#id_1635673150054_714 input[type=text], select {width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;}#id_1635673150054_714 input[type=submit] {width: 100%; background-color: #F78536; color: #FFFFFF; padding: 14px 20px; margin: 8px 0; border: 1px solid; border-radius: 3px; cursor: pointer;}#id_1635673150054_714 label {color: #000000;}#id_1635673150054_714 .fill-vertical {flex: 1 1 auto; display: flex; flex-direction: column;}#id_1635673150054_714 .fill-vertical textarea {flex: 1 1 auto; width: 100%; height: 150px; padding: 12px 20px; box-sizing: border-box; border: 2px solid #ccc; border-radius: 3px; background-color: #f8f8f8; font-size: 16px; resize: none;}#id_1635673150054_714 {border-radius: 3px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;}</style>
+
+</div>
             </div>
          </div>
       </section>
@@ -258,28 +263,28 @@ if(islogin()){
       </section>
       <section data-silex-type="container-element" class="editable-style section-element silex-id-1633603826435-4 page-home paged-element" data-silex-id="silex-id-1633603826435-4">
          <div data-silex-type="container-element" class="editable-style container-element silex-id-1633603826436-5 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1633603826436-5" style="">
-            <div onclick='window.open("doctorlogin.html","_blank")' data-silex-type="container-element" class="editable-style container-element silex-id-1633668112564-0" data-silex-id="silex-id-1633668112564-0" style="">
+            
+            
+            
+         <div onclick="window.open(&quot;doctorlogin.html&quot;,&quot;_blank&quot;)" data-silex-type="container-element" class="editable-style container-element silex-id-1633668112564-0" data-silex-id="silex-id-1633668112564-0" style="">
                <div data-silex-type="text-element" class="editable-style text-element silex-id-1633668668701-3" data-silex-id="silex-id-1633668668701-3" style="" href="null">
                   <div class="silex-element-content normal">
                      <h2><b>DOCTOR LOGIN</b></h2>
                   </div>
                </div>
-            </div>
-            <div onclick='window.open("patientlogin.html","_blank")' data-silex-type="container-element" class="editable-style container-element silex-id-1633678680651-0" data-silex-id="silex-id-1633678680651-0" style="">
+            </div><div onclick="window.open(&quot;patientlogin.html&quot;,&quot;_blank&quot;)" data-silex-type="container-element" class="editable-style container-element silex-id-1633678680651-0" data-silex-id="silex-id-1633678680651-0" style="">
                <div data-silex-type="text-element" class="editable-style text-element silex-id-1633678680652-1" data-silex-id="silex-id-1633678680652-1" style="" href="null">
                   <div class="silex-element-content normal">
                      <h2><b>PATIENT LOGIN</b></h2>
                   </div>
                </div>
-            </div>
-            <div onclick='window.open("adminlogin.html","_blank")' data-silex-type="container-element" class="editable-style container-element silex-id-1633668545156-1" data-silex-id="silex-id-1633668545156-1" style="">
+            </div><div onclick="window.open(&quot;adminlogin.html&quot;,&quot;_blank&quot;)" data-silex-type="container-element" class="editable-style container-element silex-id-1633668545156-1" data-silex-id="silex-id-1633668545156-1" style="">
                <div data-silex-type="text-element" class="editable-style text-element silex-id-1633668772180-4" data-silex-id="silex-id-1633668772180-4" style="" href="null">
                   <div class="silex-element-content normal">
                      <h2><b>ADMINISTRATOR LOGIN</b></h2>
                   </div>
                </div>
-            </div>
-         </div>
+            </div></div>
       </section>
-   </body>
-</html>
+   
+</body></html>
