@@ -279,9 +279,9 @@ while($row=mysqli_fetch_array($res)){
    }
    echo '<div class="col-sm-4">';
       echo '<summary class="card" style="width: 18rem;" onclick="window.location.href = \'info.html?doctorid='.$row["doc-id"].'\'">';
-         echo '<img class="card-img-top border-bottom border-primary" src="'.$row["imagesrc"].'" alt="">';
+         echo '<img class="card-img-top border-bottom border-primary"  src="'.$row["imagesrc"].'" alt="">';
          echo '<div class="card-body">';
-            echo '<h4 class="card-text">'.$row["name"].' '.$row["lname"].'</h4>';
+            echo '<h4 class="card-text">Dr. '.$row["name"].' '.$row["lname"].'</h4>';
             echo '<p class="card-text">Fees: <b>₹'.$row["fees"].'</b></p>';
          echo '</div>';
       echo '</summary>';

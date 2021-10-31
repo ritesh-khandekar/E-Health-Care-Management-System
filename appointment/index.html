@@ -2,11 +2,14 @@
 session_start();
 $login = false;
 if(isset($_SESSION["hms_login"])){
-  if($_SESSION["hms_admin"] || $_SESSION["hms_doctor"]){
+  if(!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"])){
     header("location: ../alldoctors.html");
   }
    global $login;
    $login = true;
+}else{
+  header("location: ../login.html");
+
 }
 if(!isset($_GET['doctorid'])) header("location: ../alldoctors.html");
 require("../conn.php");
