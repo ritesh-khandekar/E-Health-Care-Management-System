@@ -12,7 +12,7 @@ body{
 	overflow: auto;
 }
 .form-data{
-	margin-top: 1%;
+	margin-top: 15%;
 	background-color: #FFF;
 	
 }
@@ -49,7 +49,7 @@ body{
 	width: 100%;
 }
 .content{
-	margin-top: 15%;
+	margin-top: 1%;
 	text-align: center;
 	color: #FFF;
 	padding: 30px;
