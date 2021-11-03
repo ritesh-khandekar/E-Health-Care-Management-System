@@ -20,6 +20,7 @@ $fullname = secure($_POST['fullname']);
 $phone = secure($_POST['phone']);
 $email = secure($_POST['email']);
 $date = secure($_POST['date']);
+$time = secure($_POST['time']);
 $area = secure($_POST['area']);
 $city = secure($_POST['city']);
 $state = secure($_POST['state']);
@@ -285,6 +286,7 @@ init_1634100463429_469();
     <h4>Name: <div class="bold"><?= $fullname ?></div></h4>
     <h4>Address: <div class="bold"><?= $area ?>, <?= $city ?> - <?= $postalcode ?>, <?= $state ?></div></h4>
     <h4>Appointment Date: <div class="bold"><?= $date ?></div></h4>
+    <h4>Time: <div class="bold"><?= $time ?></div></h4>
     <h4>Doctor: </h4><h4><div class="bold"><?='Dr. '.$doctor['name']?> <?=$doctor['lname']?></div> </h4>
     <h4 class="total">Total</h4><h2><div class="bold"><?='₹'.$doctor["fees"]?></div></h2>
   </div>

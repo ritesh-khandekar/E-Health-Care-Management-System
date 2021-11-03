@@ -82,6 +82,16 @@ function secure($str){
                            <div class="row form-row">
                               <input id="dat" name="date" type="text" placeholder="Appointment Date" class="form-control" required>
                             </div>
+                            <div class="row form-row">
+                              <select name="time" placeholder="Appointment Time" class="form-control" required>
+                                <option value="7am-10am" disabled selected>Select a time Slot</option>
+                                <option value="7am-10am">7am-10am</option>
+                                <option value="10am-1pm">10am-1pm</option>
+                                <option value="1pm-4pm">1pm-4pm</option>
+                                <option value="4pm-7pm">4pm-7pm</option>
+                                <option value="7pm-10pm">7pm-10pm</option>
+                              </select>
+                            </div>
                             
                             <h6>Address Details</h6>
 
