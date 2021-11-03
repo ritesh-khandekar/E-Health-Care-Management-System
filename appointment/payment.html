@@ -1,3 +1,46 @@
+<?php
+session_start();
+$login = false;
+if(isset($_SESSION["hms_login"])){
+  if(!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"])){
+    header("location: ../alldoctors.html");
+  }
+   global $login;
+   $login = true;
+}else{
+  header("location: ../");
+}
+require("../conn.php");
+foreach($_POST as $key => $val){
+  if($val=="") header("location: ".isset($_SERVER["HTTP_REFERER"])? $_SERVER["HTTP_REFERER"]: "../");
+}
+$docid = secure($_POST['doc-id']);
+$spec = secure($_POST['spec']);
+$fullname = secure($_POST['fullname']);
+$phone = secure($_POST['phone']);
+$email = secure($_POST['email']);
+$date = secure($_POST['date']);
+$area = secure($_POST['area']);
+$city = secure($_POST['city']);
+$state = secure($_POST['state']);
+$postalcode = secure($_POST['postalcode']);
+$q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
+$doc = $con->query($q);
+if(mysqli_num_rows($doc)<1){
+  header("location: ../alldoctors.html");
+  return;
+}
+$doctor=1;
+while($row=mysqli_fetch_array($doc)){
+$doctor = $row;
+}
+function secure($str){
+  global $con;
+  $str = mysqli_real_escape_string($con,$str);
+  return $str;
+}
+
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1225},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -224,17 +267,26 @@ init_1634100463429_469();
       </section><section data-silex-type="container-element" class="editable-style section-element silex-id-1634036410444-0 page-home paged-element" data-silex-id="silex-id-1634036410444-0" style=""><div data-silex-type="container-element" class="editable-style container-element silex-id-1634036410445-1 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1634036410445-1" style=""><div data-silex-type="container-element" class="editable-style container-element silex-id-1634036436572-2" data-silex-id="silex-id-1634036436572-2" style=""><div data-silex-type="text-element" class="editable-style text-element silex-id-1634036447925-3" data-silex-id="silex-id-1634036447925-3" style="" href="null"><div class="silex-element-content normal"><h2><b>Make Payment:&nbsp;</b></h2></div></div></div><div data-silex-type="html-element" class="editable-style html-element silex-id-1634036942748-7" data-silex-id="silex-id-1634036942748-7" style=""><div class="silex-element-content"><hr></div></div><div data-silex-type="image-element" class="editable-style image-element silex-id-1634036867391-5" data-silex-id="silex-id-1634036867391-5" style=""><img src="../paymenthms.png"></div><div data-silex-type="html-element" class="editable-style html-element silex-id-1634098891983-0" data-silex-id="silex-id-1634098891983-0" style=""><div class="silex-element-content"><style>*,
 *::before,
 *::after {box-sizing: border-box;}body,
-html {height: 100%; font-family: 'Quicksand', sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}body {background: linear-gradient(to bottom, rgba(37,44,65,1) 0%, rgba(37,44,65,1) 60%, rgba(221,223,230,1) 60%, rgba(221,223,230,1) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#252c41', endColorstr='#dddfe6', GradientType=0 );}.subject {font-family: 'Playfair Display', serif; color: rgba(255,255,255,0.02); font-size: 16vw; letter-spacing: -4px; line-height: 0.9; z-index: -1;}h1, h2, h3, h4, h5, h6 {margin: 0; line-height: 1.4;}h1 {font-size: 42px; color: #6d819c; text-align: left;}h2 {font-size: 28px; letter-spacing: -2px; color: #6d819c; text-align: center; line-height: 2.8;}h3 {font-size: 16px; color: #dddfe6; letter-spacing: 1px; text-align: left;}h4 {font-size: 16px; color: #7495aa; letter-spacing: 1px; text-align: left; line-height: 2;}h5 {font-size: 11px; font-weight: 700; color: #c9d6de; letter-spacing: 1px; text-align: left; text-transform: uppercase;}h5 > span {margin-left: 87px;}h5.total {margin-top: 20px;}h6 {font-family: 'PT Mono'; font-size: 18px; font-weight: 400; color: #f4f5f9; letter-spacing: 0px; text-align: left; text-transform: uppercase; line-height: 1.8;}h6 > span {margin-left: 64px;}.checkout {width: 670px; height: 485px; position: absolute; top: 38%; left: 50%; background-color: #dddfe6; overflow: hidden; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; -webkit-box-shadow: 0 30px 48px rgba(37,44,65,0.32); -moz-box-shadow: 0 30px 48px rgba(37,44,65,0.32); box-shadow: 0 30px 48px rgba(37,44,65,0.32);}.order {width: 300px; height: 485px; padding: 0 30px; float: left; background-color: #f4f5f9; z-index: 1; -webkit-box-shadow: 0 15px 24px rgba(37,44,65,0.16); -moz-box-shadow: 0 15px 24px rgba(37,44,65,0.16); box-shadow: 0 15px 24px rgba(37,44,65,0.16);}ul.order-list {width: 100%; height: 205px; list-style: none; overflow-y: scroll; padding-right: 12px;}ul.order-list li {height: 60px; margin-left: -40px; overflow: hidden; border-bottom: 1px solid #e9ebf2;}ul.order-list li > img {width: 60px; height: 60px; float: left;}ul.order-list li > h4 {margin-top: 16px; line-height: 1; letter-spacing: 1px; text-align: right; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}ul.order-list li:hover > h4 {margin-top: 8px;}ul.order-list li > h5 {margin-top: 0px; text-align: right; display: none; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}ul.order-list li:hover > h5 {margin-top: 3px; display: block;}.payment {z-index: 0; width: 370px; position: relative; float: right;}.card {width: 300px; height: 178px; position: relative; margin: 0 auto; background-color: #f1404b; overflow: hidden; z-index: 1; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 0 15px 24px rgba(37,44,65,0.32); -moz-box-shadow: 0 15px 24px rgba(37,44,65,0.32); box-shadow: 0 15px 24px rgba(37,44,65,0.32);}.card-content {width: 100%; padding: 20px; position: relative; float: left; z-index: 1;}#logo-visa {position: relative; margin-top: -20px; left: 190px;}.card-form {width: 100%; position: relative; float: right; padding: 15px 35px;}.card-form > p.field {height: 48px; padding: 2px 10px; margin-bottom: 2px; background-color: #f4f5f9; border: 1px solid #d2d4de; display: inline-block; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;}input[type=text] {height: 32px; position: relative; padding: 0px 10px 0px 6px; background-color: transparent; border: none; color: #000; font-family: 'PT Mono'; font-size: 18px; font-weight: 400; z-index: 0;}input[type=text]:focus {outline: none;}::-webkit-input-placeholder {color: #dddfe6;}:-moz-placeholder {color: #dddfe6;}::-moz-placeholder {color: #dddfe6;}:-ms-input-placeholder {color: #dddfe6;}#i-cardfront, #i-cardback, #i-calendar {position: relative; top: 8px; z-index: 1;}#cardnumber {width: 244px;}#cardexpiration {width: 114px;}#cardcvc {width: 60px;}.space {margin-right: 10px;}button:focus {outline: 0;}.button-cta {width: 100%; height: 65px; position: absolute; float: right; right: 0px; bottom: -68px; padding: 10px 20px; background-color: #f1404b; border: 1px solid #f1404b; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 24px; color: #f4f5f9; z-index: -1; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}.button-cta:hover {background: rgba(193,14,26,1); border: 1px solid rgba(193,14,26,1);}.button-cta span {display: inline-block; position: relative; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}.button-cta span:after {content: '→'; color: #f4f5f9; position: absolute; opacity: 0; top: 0; right: -40px;}.button-cta:hover span {padding-right: 45px;}.button-cta:hover span:after {opacity: 1; right: 0;}.wave {height: 300px; width: 300px; position: relative; background: #780910; z-index: -1;}.wave:before, .wave:after {content: ""; display: block; position: absolute; background: linear-gradient(to bottom, rgba(193,14,26,1) 0%, rgba(241,64,76,0.3) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c10e1a', endColorstr='#f1404c', GradientType=0 ); -webkit-border-radius: 50% 50%; -moz-border-radius: 50% 50%; border-radius: 50% 50%;}.wave:after {height: 300px; width: 300px; left: 30%; top: 20%; opacity: 0.8;}.wave:before {height: 360px; width: 360px; left: -5%; top: -70%;}.paid {z-index: 0; width: 370px; position: relative; float: right; padding: 30px; text-align: center; display: none;}.paid > h2 {line-height: 1; margin-top: 10px; color: #3ac569;}.icon-credits {width: 100%; position: absolute; bottom: 4px; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; color: rgba(0,0,0,0.08); text-align: center; z-index: -1;}.icon-credits a {text-decoration: none; color: rgba(0,0,0,0.12);}</style>
+.bold{display:inline-block;color:rgb(0, 89, 255);font-weight: 700;} html {height: 100%; font-family: 'Quicksand', sans-serif; font-weight: 400; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}body {background: linear-gradient(to bottom, rgba(37,44,65,1) 0%, rgba(37,44,65,1) 60%, rgba(221,223,230,1) 60%, rgba(221,223,230,1) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#252c41', endColorstr='#dddfe6', GradientType=0 );}.subject {font-family: 'Playfair Display', serif; color: rgba(255,255,255,0.02); font-size: 16vw; letter-spacing: -4px; line-height: 0.9; z-index: -1;}h1, h2, h3, h4, h5, h6 {margin: 0; line-height: 1.4;}h1 {font-size: 42px; color: #6d819c; text-align: left;}h2 {font-size: 28px; letter-spacing: -2px; color: #6d819c; text-align: center; line-height: 2.8;}h3 {font-size: 16px; color: #dddfe6; letter-spacing: 1px; text-align: left;}h4 {font-size: 16px; color: #7495aa; letter-spacing: 1px; text-align: left; line-height: 2;}h5 {font-size: 11px; font-weight: 700; color: #c9d6de; letter-spacing: 1px; text-align: left; text-transform: uppercase;}h5 > span {margin-left: 87px;}h5.total {margin-top: 20px;}h6 {font-family: 'PT Mono'; font-size: 18px; font-weight: 400; color: #f4f5f9; letter-spacing: 0px; text-align: left; text-transform: uppercase; line-height: 1.8;}h6 > span {margin-left: 64px;}.checkout {width: 670px; height: 485px; position: absolute; top: 38%; left: 50%; background-color: #dddfe6; overflow: hidden; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; -webkit-box-shadow: 0 30px 48px rgba(37,44,65,0.32); -moz-box-shadow: 0 30px 48px rgba(37,44,65,0.32); box-shadow: 0 30px 48px rgba(37,44,65,0.32);}.order {width: 300px; height: 485px; padding: 0 30px; float: left; background-color: #f4f5f9; z-index: 1; -webkit-box-shadow: 0 15px 24px rgba(37,44,65,0.16); -moz-box-shadow: 0 15px 24px rgba(37,44,65,0.16); box-shadow: 0 15px 24px rgba(37,44,65,0.16);}ul.order-list {width: 100%; height: 205px; list-style: none; overflow-y: scroll; padding-right: 12px;}ul.order-list li {height: 60px; margin-left: -40px; overflow: hidden; border-bottom: 1px solid #e9ebf2;}ul.order-list li > img {width: 60px; height: 60px; float: left;}ul.order-list li > h4 {margin-top: 16px; line-height: 1; letter-spacing: 1px; text-align: right; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}ul.order-list li:hover > h4 {margin-top: 8px;}ul.order-list li > h5 {margin-top: 0px; text-align: right; display: none; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}ul.order-list li:hover > h5 {margin-top: 3px; display: block;}.payment {z-index: 0; width: 370px; position: relative; float: right;}.card {width: 300px; height: 178px; position: relative; margin: 0 auto; background-color: #f1404b; overflow: hidden; z-index: 1; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px; -webkit-box-shadow: 0 15px 24px rgba(37,44,65,0.32); -moz-box-shadow: 0 15px 24px rgba(37,44,65,0.32); box-shadow: 0 15px 24px rgba(37,44,65,0.32);}.card-content {width: 100%; padding: 20px; position: relative; float: left; z-index: 1;}#logo-visa {position: relative; margin-top: -20px; left: 190px;}.card-form {width: 100%; position: relative; float: right; padding: 15px 35px;}.card-form > p.field {height: 48px; padding: 2px 10px; margin-bottom: 2px; background-color: #f4f5f9; border: 1px solid #d2d4de; display: inline-block; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;}input[type=text] {height: 32px; position: relative; padding: 0px 10px 0px 6px; background-color: transparent; border: none; color: #000; font-family: 'PT Mono'; font-size: 18px; font-weight: 400; z-index: 0;}input[type=text]:focus {outline: none;}::-webkit-input-placeholder {color: #dddfe6;}:-moz-placeholder {color: #dddfe6;}::-moz-placeholder {color: #dddfe6;}:-ms-input-placeholder {color: #dddfe6;}#i-cardfront, #i-cardback, #i-calendar {position: relative; top: 8px; z-index: 1;}#cardnumber {width: 244px;}#cardexpiration {width: 114px;}#cardcvc {width: 60px;}.space {margin-right: 10px;}button:focus {outline: 0;}.button-cta {width: 100%; height: 65px; position: absolute; float: right; right: 0px; bottom: -68px; padding: 10px 20px; background-color: #f1404b; border: 1px solid #f1404b; font-family: 'Quicksand', sans-serif; font-weight: 700; font-size: 24px; color: #f4f5f9; z-index: -1; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}.button-cta:hover {background: rgba(193,14,26,1); border: 1px solid rgba(193,14,26,1);}.button-cta span {display: inline-block; position: relative; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s;}.button-cta span:after {content: '→'; color: #f4f5f9; position: absolute; opacity: 0; top: 0; right: -40px;}.button-cta:hover span {padding-right: 45px;}.button-cta:hover span:after {opacity: 1; right: 0;}.wave {height: 300px; width: 300px; position: relative; background: #780910; z-index: -1;}.wave:before, .wave:after {content: ""; display: block; position: absolute; background: linear-gradient(to bottom, rgba(193,14,26,1) 0%, rgba(241,64,76,0.3) 100%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c10e1a', endColorstr='#f1404c', GradientType=0 ); -webkit-border-radius: 50% 50%; -moz-border-radius: 50% 50%; border-radius: 50% 50%;}.wave:after {height: 300px; width: 300px; left: 30%; top: 20%; opacity: 0.8;}.wave:before {height: 360px; width: 360px; left: -5%; top: -70%;}.paid {z-index: 0; width: 370px; position: relative; float: right; padding: 30px; text-align: center; display: none;}.paid > h2 {line-height: 1; margin-top: 10px; color: #3ac569;}.icon-credits {width: 100%; position: absolute; bottom: 4px; font-family: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif; font-size: 12px; color: rgba(0,0,0,0.08); text-align: center; z-index: -1;}.icon-credits a {text-decoration: none; color: rgba(0,0,0,0.12);}</style>
 <div class="subject">DailyUI #002 <br><strong>Credit Card Checkout</strong></div>
 
 <div class="checkout">
+  <form method="POST" id="formpayment" action="donepayment.html">
+    <?php
+    foreach($_POST as $key => $val){
+      echo '<input type="hidden" name="'.secure($key).'" value="'.secure($val).'"/>';
+    }
+      ?>
+  </form>
   <div class="order">
+    <?php //var_dump($_POST)
+    ?>
     <h2>Book Appointment</h2>
-    <h4>Name: {NAME}</h4>
-    <h4>Address: {ADDRESS}</h4>
-    <h4>Appointment Date</h4>
-    <h5>with</h5><h4>{DOCTOR}</h4>
-    <h5 class="total">Total</h5><h2>$0</h2>
+    <h4>Name: <div class="bold"><?= $fullname ?></div></h4>
+    <h4>Address: <div class="bold"><?= $area ?>, <?= $city ?> - <?= $postalcode ?>, <?= $state ?></div></h4>
+    <h4>Appointment Date: <div class="bold"><?= $date ?></div></h4>
+    <h4>Doctor: </h4><h4><div class="bold"><?='Dr. '.$doctor['name']?> <?=$doctor['lname']?></div> </h4>
+    <h4 class="total">Total</h4><h2><div class="bold"><?='₹'.$doctor["fees"]?></div></h2>
   </div>
   <h2>Payment</h2>
   <div id="payment" class="payment">
@@ -332,9 +384,34 @@ html {height: 100%; font-family: 'Quicksand', sans-serif; font-weight: 400; -web
           </svg>
           <input type="text" id="cardcvc" name="cardcvc" placeholder="123" pattern="\d*" title="CVC Code">
       </p>
-      <button class="button-cta" title="Confirm your aAppointment"><span>BOOK APPOINTMENT</span></button>
+      <button class="button-cta" title="Confirm your aAppointment" onclick="gateway()"><span>BOOK APPOINTMENT</span></button>
     </div>
   </div>
+  <style>
+    .loader {
+      margin-top: 20%;
+      display: inline-block;
+      border: 5px solid #dbdbdb;
+      border-radius: 50%;
+      clear: both;
+      border-top: 5px solid #000000;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+    
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    </style>
   <div id="paid" class="paid">
     <svg id="icon-paid" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 310.277 310.277" style="enable-background:new 0 0 310.277 310.277;" xml:space="preserve" width="180px" height="180px">
     <g>	<path d="M155.139,0C69.598,0,0,69.598,0,155.139c0,85.547,69.598,155.139,155.139,155.139   c85.547,0,155.139-69.592,155.139-155.139C310.277,69.598,240.686,0,155.139,0z M144.177,196.567L90.571,142.96l8.437-8.437   l45.169,45.169l81.34-81.34l8.437,8.437L144.177,196.567z" fill="#3ac569"></path>
@@ -343,8 +420,26 @@ html {height: 100%; font-family: 'Quicksand', sans-serif; font-weight: 400; -web
     <h2>Thank you!</h2>
   </div>
 </div>
-
-</div></div></div></section><section data-silex-type="container-element" class="container-element editable-style section-element silex-id-1545056615878-13 prevent-resizable page-hotels paged-element" data-silex-id="silex-id-1545056615878-13">
+<div id="cover" style="display:none;text-align:center;width:100%;height:100%;position:fixed;top:0;left:0;background:rgba(63, 63, 63, 0.6)">
+<div class="loader"></div>
+</div>
+<script>
+  function gateway(){
+    setTimeout(() => {
+      document.querySelector(".payment").style.display="none";
+      document.querySelector(".paid").style.display="block";
+    }, 4000);
+    setTimeout(() => {
+      document.querySelector("#cover").style.display="block";
+    }, 5000);
+    setTimeout(() => {
+      document.querySelector("#formpayment").submit();
+    }, 6000);
+    window.open('gateway.html','_blank');
+  }
+</script>
+</div></div></div></section>
+<section data-silex-type="container-element" class="container-element editable-style section-element silex-id-1545056615878-13 prevent-resizable page-hotels paged-element" data-silex-id="silex-id-1545056615878-13">
          <div data-silex-type="container-element" class="editable-style container-element silex-element-content website-width silex-id-1545056615879-14" data-silex-id="silex-id-1545056615879-14">
             <div data-silex-type="text-element" class="editable-style text-element text-style-2 silex-id-1545056615879-15" data-silex-id="silex-id-1545056615879-15" style="">
                <div class="silex-element-content normal">

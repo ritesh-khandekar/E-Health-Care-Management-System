@@ -61,41 +61,44 @@ function secure($str){
                 <div class="col-sm-5">
                     <div class="form-data">
                         <div class="form-head">
-                            <h2>Book Appointemnt</h2>
+                            <h2>Book Appointment</h2>
                         </div>
+                        <form action="payment.html" method="post" >
                         <div class="form-body">
                             <div class="row form-row">
                               <select class="form-control disabled" disabled><option>Dr. <?=$doctor["name"].' '.$doctor["lname"]?></option></select>
                             </div>
                             <div class="row form-row">
-                              <input type="text" placeholder="Enter Full name" class="form-control" value="<?= $_SESSION['hms_login_fname'].' '.$_SESSION['hms_login_lname']?>">
+                              <input type="text" name="fullname" placeholder="Enter Full name" class="form-control" value="<?= $_SESSION['hms_login_fname'].' '.$_SESSION['hms_login_lname']?>" required>
                             </div>
+                            <input type="hidden" name="doc-id" value="<?=$doctor['doc-id']?>"/>
+                            <input type="hidden" name="spec" value="<?=$doctor['spec']?>"/>
                             <div class="row form-row">
-                              <input type="text" placeholder="Enter Mobile Number" class="form-control" >
+                              <input type="text" name="phone" placeholder="Enter Mobile Number" class="form-control" >
                             </div>
                              <div class="row form-row">
-                              <input type="text" placeholder="Enter Email Adreess" class="form-control" value="<?= $_SESSION['hms_login_email']?>">
+                              <input type="text" name="email" placeholder="Enter Email Adreess" class="form-control" value="<?= $_SESSION['hms_login_email']?>" required>
                             </div>
                            <div class="row form-row">
-                              <input id="dat" type="text" placeholder="Appointment Date" class="form-control">
+                              <input id="dat" name="date" type="text" placeholder="Appointment Date" class="form-control" required>
                             </div>
                             
                             <h6>Address Details</h6>
 
                              <div class="row form-row">
                                 <div class="col-sm-6">
-                                   <input type="text" placeholder="Enter Area" class="form-control">
+                                   <input type="text" name="area" placeholder="Enter Area" class="form-control" required>
                                 </div>
                                 <div class="col-sm-6">
-                                   <input type="text" placeholder="Enter City" class="form-control">
+                                   <input type="text" name="city" placeholder="Enter City" class="form-control" required>
                                 </div>
                             </div>
                              <div class="row form-row">
                                 <div class="col-sm-6">
-                                   <input type="text" placeholder="Enter State" class="form-control">
+                                   <input type="text" name="state" placeholder="Enter State" class="form-control" required>
                                 </div>
                                 <div class="col-sm-6">
-                                   <input type="text" placeholder="Postal Code" class="form-control">
+                                   <input type="text" name="postalcode" placeholder="Postal Code" class="form-control" required>
                                 </div>
                             </div>
 
@@ -107,6 +110,7 @@ function secure($str){
                             </div>
 
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
