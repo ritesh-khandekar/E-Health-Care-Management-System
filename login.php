@@ -24,6 +24,7 @@ $next = urlencode($nexturl);
             $email = $row["email"];
             $gender = $row["gender"];
             $type = $row["type"];
+            $uid = $row["id"];
         }
         login($fname,$lname,$email,$gender,$type=="DOCTOR",$type=="ADMIN");
         if($next!='') {header("location: $nexturl");return;}
@@ -49,5 +50,6 @@ $next = urlencode($nexturl);
         $_SESSION["hms_login_gender"] = $gender;
         $_SESSION["hms_doctor"] = $booldoctor;
         $_SESSION["hms_admin"] = $booladmin;
+        $_SESSION["hms_user_id"] = $uid;
     }
 ?>

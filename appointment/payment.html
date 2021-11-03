@@ -35,6 +35,22 @@ $doctor=1;
 while($row=mysqli_fetch_array($doc)){
 $doctor = $row;
 }
+$sessionemail = secure($_SESSION["hms_login_email"]);
+$sessionfname = secure($_SESSION["hms_login_fname"]);
+$sessionlname = secure($_SESSION["hms_login_lname"]);
+
+$q = "SELECT id FROM users WHERE `fname`='$sessionfname' AND `lname`='$sessionlname' AND `email`='$sessionemail'";
+$user = $con->query($q);
+if(mysqli_num_rows($user)<1){
+  header("location: ../alldoctors.html");
+  return;
+}
+$hms_user=1;
+while($row=mysqli_fetch_array($user)){
+$hms_user = $row;
+}
+$_SESSION["hms_user_id"] = $hms_user["id"];
+
 function secure($str){
   global $con;
   $str = mysqli_real_escape_string($con,$str);

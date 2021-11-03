@@ -249,6 +249,12 @@ init_1635862524861_233();
       </section>
       <div data-silex-type="html-element" class="editable-style html-element silex-id-1635862530174-0 page-home paged-element" data-silex-id="silex-id-1635862530174-0" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
          <h3>MY APPOINTMENTS</h3>
+         <?php
+         require("conn.php");
+         $uid = $_SESSION["hms_user_id"];
+         $q = "SELECT * FROM appointments WHERE patientid='$uid'";
+         
+         ?>
          <button class="btn btn-primary p-3 m-3 w-50" type="submit">Button</button>
 
 </div></div></body></html>

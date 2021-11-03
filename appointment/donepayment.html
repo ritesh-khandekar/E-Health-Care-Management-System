@@ -36,6 +36,7 @@ $city = secure($_POST['city']);
 $state = secure($_POST['state']);
 $time = secure($_POST['time']);
 $postalcode = secure($_POST['postalcode']);
+$uid = $_SESSION["hms_user_id"];
 $id = '';
 $q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
 $doc = $con->query($q);
@@ -48,14 +49,28 @@ while($row=mysqli_fetch_array($doc)){
 $doctor = $row;
 }
 $b = true;
+$q = "SELECT * FROM appointments WHERE patientid = '$uid' AND date='$date' AND time='$time'";
+$app = $con->query($q);
+if(mysqli_num_rows($app)>=1){
+  while($row=mysqli_fetch_array($app)){
+    $appointment = $row;
+    }
+    $id = $appointment["id"];
+    global $b;
+  $b = false;
+};
+
 foreach($_POST as $key => $val){
   if($val == ''){
     $b = false;
   }
 }
+
 if($b && isset($_POST["time"])){
+
 $id = getRandomHex(20);
-$q = "SELECT * FROM users";
+$fees = $doctor["fees"];
+$q = "INSERT INTO appointments VALUES ('','$docid','$uid','$date','$time','$area','$city','$state','$postalcode','$id','PAID','$fees')";
 if($con->query($q)){
   
 }else{
