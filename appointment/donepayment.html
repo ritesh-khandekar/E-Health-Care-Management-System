@@ -1,3 +1,42 @@
+<?php
+session_start();
+$login = false;
+if(isset($_SESSION["hms_login"])){
+  if(!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"])){
+    header("location: ../alldoctors.html");
+  }
+   global $login;
+   $login = true;
+}else{
+  header("location: ../");
+}
+require("../conn.php");
+$docid = secure($_POST['doc-id']);
+$spec = secure($_POST['spec']);
+$fullname = secure($_POST['fullname']);
+$phone = secure($_POST['phone']);
+$email = secure($_POST['email']);
+$date = secure($_POST['date']);
+$area = secure($_POST['area']);
+$city = secure($_POST['city']);
+$state = secure($_POST['state']);
+$postalcode = secure($_POST['postalcode']);
+$q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
+$doc = $con->query($q);
+if(mysqli_num_rows($doc)<1){
+  header("location: ../alldoctors.html");
+  return;
+}
+$doctor=1;
+while($row=mysqli_fetch_array($doc)){
+$doctor = $row;
+}
+function secure($str){
+  global $con;
+  $str = mysqli_real_escape_string($con,$str);
+  return $str;
+}
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1225},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
