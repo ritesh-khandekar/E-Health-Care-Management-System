@@ -262,7 +262,7 @@ init_1635425971142_557();
             </div>
          </div>
       </section><section data-silex-type="container-element" class="editable-style section-element silex-id-1635426126255-1 page-home paged-element" data-silex-id="silex-id-1635426126255-1"><div data-silex-type="container-element" class="editable-style container-element silex-id-1635426126256-2 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1635426126256-2" style=""><div data-silex-type="html-element" class="editable-style html-element silex-id-1635426066838-0 page-home paged-element" data-silex-id="silex-id-1635426066838-0" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+         <div class="row">
 <?php
 $q = "SELECT * FROM DOCTORS ORDER BY POINTS DESC,ID DESC,FEES ASC";
 $res=$con->query($q);
@@ -275,11 +275,11 @@ if($n%3==0){
 $i = 1;
 while($row=mysqli_fetch_array($res)){
    if($i%$n == 0){
-      echo '<div class="row">';
+      //echo '<div class="row">';
    }
    echo '<div class="col-sm-4">';
       echo '<summary class="card" style="width: 18rem;" onclick="window.location.href = \'info.html?doctorid='.$row["doc-id"].'\'">';
-         echo '<img class="card-img-top border-bottom border-primary"  src="'.$row["imagesrc"].'" alt="">';
+         echo '<img class="card-img-top border-bottom border-primary" height="300px" src="'.$row["imagesrc"].'" alt="">';
          echo '<div class="card-body">';
             echo '<h4 class="card-text">Dr. '.$row["name"].' '.$row["lname"].'</h4>';
             echo '<p class="card-text">Fees: <b>₹'.$row["fees"].'</b></p>';
@@ -288,11 +288,12 @@ while($row=mysqli_fetch_array($res)){
    echo '</div>';
 
    if($i%$n == 0){
-      echo '</div>';
+      //echo '</div>';
    }
+   $i++;
 }
 ?>
-
+</div>
 <style>
 .card:hover{
      transform: scale(1.05);
