@@ -2,6 +2,9 @@
 session_start();
 $login = false;
 if(isset($_SESSION["hms_login"])){
+  if($_SESSION["hms_admin"] || $_SESSION["hms_doctor"]){
+    header("location: ../");
+  }
   if(!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"])){
     header("location: ../alldoctors.html");
   }

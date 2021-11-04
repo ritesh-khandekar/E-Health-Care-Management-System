@@ -15,6 +15,9 @@ if(isset($_GET["appointmentid"])){
   $appid = secure($_GET["appointmentid"]);
   $patientid = $_SESSION["hms_user_id"];
   $q = "SELECT * FROM appointments WHERE id='$appid' AND patientid='$patientid'";
+  if($_SESSION["hms_admin"]){
+    $q = "SELECT * FROM appointments WHERE id='$appid'";
+  }
   $app = $con->query($q);
   if(mysqli_num_rows($app)<1){
     header("location: ../myappointments.html");
