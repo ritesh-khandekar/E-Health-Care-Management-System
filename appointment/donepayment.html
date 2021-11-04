@@ -12,9 +12,20 @@ if(isset($_SESSION["hms_login"])){
 }
 require("../conn.php");
 if(isset($_GET["appointmentid"])){
-  $docid = secure($_GET['doc-id']);
-$spec = secure($_GET['spec']);
-  $q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
+  $appid = secure($_GET["appointmentid"]);
+  $patientid = $_SESSION["hms_user_id"];
+  $q = "SELECT * FROM appointments WHERE id='$appid' AND patientid='$patientid'";
+  $app = $con->query($q);
+  if(mysqli_num_rows($app)<1){
+    header("location: ../myappointments.html");
+    return;
+  }
+  $appo=1;
+  while($row=mysqli_fetch_array($app)){
+  $appo = $row;
+  }
+  $docid = $appo["doc-id"];
+  $q = "SELECT * FROM doctors WHERE `doc-id`='$docid'";
   $doc = $con->query($q);
   if(mysqli_num_rows($doc)<1){
     header("location: ../alldoctors.html");
@@ -24,6 +35,24 @@ $spec = secure($_GET['spec']);
   while($row=mysqli_fetch_array($doc)){
   $doctor = $row;
   }
+  $patientid = $appo["patientid"];
+  $q = "SELECT * FROM users WHERE `id`='$patientid'";
+  $patient = $con->query($q);
+  if(mysqli_num_rows($patient)<1){
+    header("location: ../alldoctors.html");
+    return;
+  }
+  $user=1;
+  while($row=mysqli_fetch_array($patient)){
+  $user = $row;
+  }
+  
+  $fullname = $user['fname'].' '.$user['lname'];
+  $phone = $user['phone'];
+  $email = $user['email'];
+  $date = $appo['date'];
+  $time = $appo['time'];
+  $id = $appo['id'];
 }else{
 $docid = secure($_POST['doc-id']);
 $spec = secure($_POST['spec']);
@@ -311,7 +340,8 @@ function printdiv(divName) {
   var originalContents = document.body.innerHTML;
 
   document.body.innerHTML = printContents;
-
+  document.body.innerHTML = originalContents;
+  document.body.innerHTML = printContents;
   window.print();
   document.body.innerHTML = originalContents;
 }
