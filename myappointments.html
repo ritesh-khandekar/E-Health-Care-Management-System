@@ -252,9 +252,12 @@ init_1635862524861_233();
          <?php
          require("conn.php");
          $uid = $_SESSION["hms_user_id"];
-         $q = "SELECT * FROM appointments WHERE patientid='$uid'";
-         
+         $q = "SELECT doctors.*,appointments.* FROM appointments INNER JOIN doctors ON appointments.`doc-id` = doctors.`doc-id` WHERE patientid='$uid' ORDER BY date DESC";
+         $q = $con->query($q);
+         while($row=mysqli_fetch_array($q)){
+           echo '<button class="btn btn-primary p-3 m-3 w-50" type="submit" onclick="window.location.href=\'appointment/donepayment.html?appointmentid='.$row["id"].'\'">'.$row["date"].' with Dr. '.$row["name"].' '.$row["lname"].'</button>';
+         }
          ?>
-         <button class="btn btn-primary p-3 m-3 w-50" type="submit">Button</button>
+         
 
 </div></div></body></html>
