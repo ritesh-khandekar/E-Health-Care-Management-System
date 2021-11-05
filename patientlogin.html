@@ -1,9 +1,16 @@
 <?php
+session_start();
 $err = '';
+$err0 = "Please Enter your Email and Password";
+if(isset($_SESSION["last_login_email"])){
+	if($_SESSION["last_login_email"]!=""){
+		$err0 = "Please Enter your Password";
+	}
+}
 if(isset($_GET["valerrno"])){
   $n = $_GET["valerrno"];
   if($n==0){
-    $err = "Please Enter your Email and Password";
+    $err =$err0;	
   }
   if($n==1){
     $err = "Email or Password Incorrect!";
@@ -12,6 +19,7 @@ if(isset($_GET["valerrno"])){
     $err = "Account already Exists on this Email!";
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,15 +53,16 @@ if(isset($_GET["valerrno"])){
 					echo "<div style='padding:10px;color:red'>$err</div>";
 				}
 			?>
+
 			<label for="username">Email</label>
 			<br/>
-			<input type="text" id="username" name = "email">
+			<input type="text" id="username" name = "email" value="<?=isset($_SESSION["last_login_email"])?secure($_SESSION["last_login_email"]):''?>">
 			<br/>
 			<label for="password">Password</label>
 			<br/>
 			<input type="password" id="password" name="password">
 			<br/>
-			<input type="hidden" name="next" value="<?=isset($_GET["next"])?$_GET["next"]:''?>">
+			<input type="hidden" name="next" value="<?=isset($_GET["next"])?secure($_GET["next"]):''?>">
 			<button type="submit" name="login_btn">Sign In</button>
 			<br/></form>
 			<a href="#"><p class="small">Forgot your password?</p></a>

@@ -1,6 +1,6 @@
 <?php
 if(!isset($_POST["login_btn"])) return;
-
+session_start();
 $type = isset($_POST["type"]) ? $_POST["type"]: "";
 $nexturl = isset($_POST["next"])?($_POST["next"]!=''? $_POST["next"]:''):'';
 $next = urlencode($nexturl);
@@ -8,7 +8,7 @@ $next = urlencode($nexturl);
     $pass = secure($_POST["password"]);
    
     if($email=="" || $pass==""){
-
+        $_SESSION["last_login_email"] = secure($email);
         if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=0&next=$next");return;};
         header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=0&next=$next": "location: patientlogin.html?valerrno=0&next=$next");
         return;
@@ -31,6 +31,7 @@ $next = urlencode($nexturl);
         header("location: patienthome.html?success");
         return;
     }else{
+        $_SESSION["last_login_email"] = secure($email);
         if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=1&next=$next");return;};
         header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=1&next=$next": "location: patientlogin.html?valerrno=1&next=$next");
         return;
@@ -42,7 +43,7 @@ $next = urlencode($nexturl);
         return $str;
     }
     function login($fname,$lname,$email,$gender,$booldoctor,$booladmin){
-        session_start();
+
         $_SESSION["hms_login"] = true;
         $_SESSION["hms_login_fname"] = $fname;
         $_SESSION["hms_login_lname"] = $lname;

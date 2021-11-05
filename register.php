@@ -26,14 +26,14 @@ if(!isset($_POST["register"])) header("location: register.html");
         header("location: register.html?valerrno=3");
         return;
     }
-    $q = "INSERT INTO users VALUES('','$fname','$lname','$email','$pass','$phone','$gender','')";
+    $q = "INSERT INTO users VALUES('','$fname','$lname','$email','$pass','$phone','$gender','','')";
 
     if($con->query($q)){
-        login();
-        header("location: home.html?success");
+        //login();
+        header("location: patientlogin.html?success");
         return;
     }
-    header("location: register.html")
+    //header("location: register.html");
     function login(){
         session_start();
         $_SESSION["hms_login"] = true;
@@ -41,6 +41,9 @@ if(!isset($_POST["register"])) header("location: register.html");
         $_SESSION["hms_login_lname"] = $lname;
         $_SESSION["hms_login_email"] = $email;
         $_SESSION["hms_login_gender"] = $gender;
+        $_SESSION["hms_doctor"] = false;
+        $_SESSION["hms_admin"] = false;
+        $_SESSION["hms_user_id"] = '';
     }
     function secure($str){
         global $con;
