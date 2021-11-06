@@ -176,64 +176,6 @@ function getRandomHex($num_bytes=4) {
       transform 0.1s ease-in,
       background 0.1s ease-in;}.hamburger-menu_1634725921094_969.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1634725921094_969 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1634725921094_969.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1634725921094_969.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1634725921094_969 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1634725921094_969.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
 <!-- inspired by https://codepen.io/erikterwan/pen/EVzeRP -->
-<div class="hamburger-menu_1634725921094_969 closed">
-    <div class="hamburger-btn fixed">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-container">
-      <div class="prevent-scale">
-        <nav role="navigation" class="">
-            <ul>
-            
-                <li><a href="#!page-home" class="page-link-active">Home</a></li>
-            
-                <li><a href="#!page-vacations">Vacations</a></li>
-            
-                <li><a href="#!page-flights">Flights</a></li>
-            
-                <li><a href="#!page-hotels">Hotels</a></li>
-            
-                <li><a href="#!page-contact">Contact</a></li>
-            
-            </ul>
-        </nav>
-      </div>
-  </div>
-</div>
-<script>
-(function() {
-  var isOpen = false;
-  function close() {
-    isOpen = false;
-    $('.hamburger-menu_1634725921094_969').removeClass('open');
-    $('.hamburger-menu_1634725921094_969').addClass('closed');
-  }
-  function open() {
-    isOpen = true;
-    $('.hamburger-menu_1634725921094_969').addClass('open');
-    $('.hamburger-menu_1634725921094_969').removeClass('closed');
-  }
-  function toggle() {
-    if(isOpen) close();
-    else open();
-  }
-  var silexElement = $('.hamburger-menu_1634725921094_969').closest('.editable-style');
-  function move(data) {
-    var offset = silexElement.offset();
-    $('.hamburger-menu_1634725921094_969 .nav-container').css({
-      'transform': 'translate(' + (data.scrollLeft - (offset.left/data.scale)) + 'px, ' + (data.scrollTop - (offset.top/data.scale)) + 'px)'
-    });
-  }
-  $('.hamburger-menu_1634725921094_969 .hamburger-btn').click(function() { toggle(); });
-  $(document).on('silex.scroll silex.resize', function(e) {
-    close();
-    move(window.silex);
-  });
-  close();
-})();
-</script>
 </div>
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
@@ -253,111 +195,8 @@ function getRandomHex($num_bytes=4) {
                </div>
             </div>
          </div>
-      </section><section data-silex-type="container-element" class="container-element editable-style silex-id-1545056415237-3 section-element prevent-resizable page-contact paged-element" data-silex-id="silex-id-1545056415237-3">
-         <div data-silex-type="container-element" class="editable-style silex-id-1545056415233-2 container-element silex-element-content website-width" data-silex-id="silex-id-1545056415233-2">
-            <div data-silex-type="text-element" class="editable-style text-element text-style-2 silex-id-1545056530213-6" data-silex-id="silex-id-1545056530213-6" style="">
-               <div class="silex-element-content normal">
-                  <h2>Contact Us<br></h2>
-               </div>
-               ﻿﻿
-            </div>
-            <div data-silex-type="html-element" class="editable-style silex-id-1548870370847-0 html-element silex-component silex-component-map silex-use-height-not-minheight silex-element-content-full-height" data-silex-id="silex-id-1548870370847-0">
-               <div class="silex-element-content"><div id="mapdiv_1634725921096_801" class="map"><div class="ol-viewport" style="position: relative; overflow: hidden; width: 100%; height: 100%;"><div class="ol-unselectable ol-layers" style="position: absolute; width: 100%; height: 100%; z-index: 0; display: none;"></div><div class="ol-overlaycontainer" style="position: absolute; z-index: 0; width: 100%; height: 100%;"></div><div class="ol-overlaycontainer-stopevent" style="position: absolute; z-index: 0; width: 100%; height: 100%;"><div class="ol-zoom ol-unselectable ol-control"><button class="ol-zoom-in" type="button" title="Zoom in">+</button><button class="ol-zoom-out" type="button" title="Zoom out">−</button></div><div class="ol-rotate ol-unselectable ol-control ol-hidden"><button class="ol-rotate-reset" type="button" title="Reset rotation"><span class="ol-compass">⇧</span></button></div><div class="ol-attribution ol-unselectable ol-control ol-collapsed" style="display: none;"><ul></ul><button type="button" title="Attributions"><span>i</span></button></div></div></div></div>
-<style>#mapdiv_1634725921096_801 {width: 100%; height: 100%;}</style>
-<script>
-
-
-function init_1634725921096_801() {
-    if(typeof(ol) === 'undefined') {
-        // console.warn('Map not ready, restart later')
-        // wait for dependencies to be loaded
-        setTimeout(init_1634725921096_801, 1000);
-        return;
-    }
-
-    // empty the div before adding the map again
-    $('#mapdiv_1634725921096_801').empty();
-
-    // apply position and zoom
-    // from map URL http://www.openstreetmap.org/#map=18/48.88680/2.34235&layers=C
-    // var params = 'http://www.openstreetmap.org/#map=18/48.87378/2.29489&layers=C'.match(/.*map=([0-9]*)\/(.*)\/(.*)&layers=(.)/);
-    var params = 'http://www.openstreetmap.org/#map=18/48.87378/2.29489&layers=C'.match(/.*map=([0-9]*)\/(.*)\/(.*)/);
-    if(params) {
-        var zoom = parseFloat(params[1]);
-        var lat = parseFloat(params[2]);
-        var lon = parseFloat(params[3]);
-        // var layer = params[4] || 'S';
-        var center = ol.proj.fromLonLat([lon, lat]);
-        var map = new ol.Map({
-          layers: [
-            new ol.layer.Tile({
-              source: new ol.source.OSM()
-            })
-          ],
-          target: 'mapdiv_1634725921096_801',
-          view: new ol.View({
-            center: center,
-            zoom: zoom
-          })
-        });
-        
-    }
-}
-init_1634725921096_801();
-// $(document).on('silex.resize', function() {
-//     $('#mapdiv_1634725921096_801').empty();
-//     init_1634725921096_801();
-// });
-
-</script>
-</div>
-            </div>
-            <div data-silex-type="html-element" class="editable-style silex-id-1548871340538-0 html-element silex-component silex-component-form silex-use-height-not-minheight silex-element-content-full-height" data-silex-id="silex-id-1548871340538-0">
-               <div class="silex-element-content"><form id="id_1634725921097_330" action="https://formspree.io/your@email.com" method="POST">
-  
-  <div>
-    <label for="field1">Name</label>
-    <input type="text" required="" id="field1" name="field1" placeholder="Your name">
-  </div>
-  
-  
-  <div>
-    <label for="field2">Your email adress</label>
-    <input type="text" required="" id="field2" name="field2" placeholder="your@email.com">
-  </div>
-  
-  
-  <div class="fill-vertical">
-    <label for="field3">Your message</label>
-    <textarea required="" id="field3" name="field3" placeholder="What you have to say"></textarea>
-  </div>
-  
-  <input type="submit" value="Send">
-</form>
-<style>#id_1634725921097_330 input[type=text], select {width: 100%; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 3px; box-sizing: border-box;}#id_1634725921097_330 input[type=submit] {width: 100%; background-color: #F78536; color: #FFFFFF; padding: 14px 20px; margin: 8px 0; border: 1px solid; border-radius: 3px; cursor: pointer;}#id_1634725921097_330 label {color: #000000;}#id_1634725921097_330 .fill-vertical {flex: 1 1 auto; display: flex; flex-direction: column;}#id_1634725921097_330 .fill-vertical textarea {flex: 1 1 auto; width: 100%; height: 150px; padding: 12px 20px; box-sizing: border-box; border: 2px solid #ccc; border-radius: 3px; background-color: #f8f8f8; font-size: 16px; resize: none;}#id_1634725921097_330 {border-radius: 3px; display: flex; flex-direction: column; justify-content: space-between; height: 100%;}</style>
-
-</div>
-            </div>
-         </div>
-      </section><section data-silex-type="container-element" class="container-element editable-style silex-id-1545056569614-8 section-element prevent-resizable page-vacations paged-element" data-silex-id="silex-id-1545056569614-8">
-         <div data-silex-type="container-element" class="editable-style silex-id-1545056569608-7 container-element silex-element-content website-width" data-silex-id="silex-id-1545056569608-7">
-            <div data-silex-type="text-element" class="editable-style text-element text-style-2 silex-id-1545056587321-9" data-silex-id="silex-id-1545056587321-9" style="">
-               <div class="silex-element-content normal">
-                  <h2>Your content Here<br></h2>
-               </div>
-               ﻿﻿
-            </div>
-         </div>
-      </section><section data-silex-type="container-element" class="container-element editable-style section-element silex-id-1545056612457-10 prevent-resizable page-flights paged-element" data-silex-id="silex-id-1545056612457-10">
-         <div data-silex-type="container-element" class="editable-style container-element silex-element-content website-width silex-id-1545056612458-11" data-silex-id="silex-id-1545056612458-11">
-            <div data-silex-type="text-element" class="editable-style text-element text-style-2 silex-id-1545056612459-12" data-silex-id="silex-id-1545056612459-12" style="">
-               <div class="silex-element-content normal">
-                  <h2>Your content Here<br></h2>
-               </div>
-               ﻿﻿
-            </div>
-         </div>
       </section>
+ 
       <h2 class="ml-4 w-50">  ADD DOCTOR:</h2>
       <div data-silex-type="html-element" class="editable-style html-element silex-id-1634725938274-3 page-home paged-element" data-silex-id="silex-id-1634725938274-3" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <form method="post" action=""  enctype="multipart/form-data">
@@ -434,13 +273,5 @@ init_1634725921096_801();
         <?= $err != '' ? '<div class="p-1 m-2 rounded w-50 bg-danger text-white mx-auto background-p">'.$err.'</div>':''?>
       <button class="btn btn-primary p-3 mx-auto " name="formsubmit" value="add" type="submit">Add Doctor</button>
 
-</div></form></div></div><section data-silex-type="container-element" class="container-element editable-style section-element silex-id-1545056615878-13 prevent-resizable page-hotels paged-element" data-silex-id="silex-id-1545056615878-13">
-         <div data-silex-type="container-element" class="editable-style container-element silex-element-content website-width silex-id-1545056615879-14" data-silex-id="silex-id-1545056615879-14">
-            <div data-silex-type="text-element" class="editable-style text-element text-style-2 silex-id-1545056615879-15" data-silex-id="silex-id-1545056615879-15" style="">
-               <div class="silex-element-content normal">
-                  <h2>Your content Here<br></h2>
-               </div>
-               ﻿﻿
-            </div>
-         </div>
-      </section><div data-silex-type="image-element" class="editable-style image-element silex-id-1634727392144-4 page-home paged-element" data-silex-id="silex-id-1634727392144-4" style=""><img src="<?= $imgsrc ?>" id="imgdoc"></div></body></html>
+</div></form></div></div>
+<div data-silex-type="image-element" class="editable-style image-element silex-id-1634727392144-4 page-home paged-element" data-silex-id="silex-id-1634727392144-4" style=""><img src="<?= $imgsrc ?>" id="imgdoc"></div></body></html>

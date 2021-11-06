@@ -81,38 +81,7 @@ if(islogin()){
       transform 0.1s ease-in,
       background 0.1s ease-in;}.hamburger-menu_1634013232415_115.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1634013232415_115 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1634013232415_115.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1634013232415_115.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1634013232415_115 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1634013232415_115.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
 
-<script>
-(function() {
-  var isOpen = false;
-  function close() {
-    isOpen = false;
-    $('.hamburger-menu_1634013232415_115').removeClass('open');
-    $('.hamburger-menu_1634013232415_115').addClass('closed');
-  }
-  function open() {
-    isOpen = true;
-    $('.hamburger-menu_1634013232415_115').addClass('open');
-    $('.hamburger-menu_1634013232415_115').removeClass('closed');
-  }
-  function toggle() {
-    if(isOpen) close();
-    else open();
-  }
-  var silexElement = $('.hamburger-menu_1634013232415_115').closest('.editable-style');
-  function move(data) {
-    var offset = silexElement.offset();
-    $('.hamburger-menu_1634013232415_115 .nav-container').css({
-      'transform': 'translate(' + (data.scrollLeft - (offset.left/data.scale)) + 'px, ' + (data.scrollTop - (offset.top/data.scale)) + 'px)'
-    });
-  }
-  $('.hamburger-menu_1634013232415_115 .hamburger-btn').click(function() { toggle(); });
-  $(document).on('silex.scroll silex.resize', function(e) {
-    close();
-    move(window.silex);
-  });
-  close();
-})();
-</script>
+
 </div>
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
