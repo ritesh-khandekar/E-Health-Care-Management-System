@@ -142,6 +142,39 @@ function secure($str){
     <script>
       $(document).ready(function(){
           $("#dat").datepicker();
+          $("#dat").change(function(){
+            $.ajax({
+              type: "POST",
+              data: {"date": $(this).val()},
+              dataType: "JSON",
+              url: "availappointments.php",
+              success: function(d){
+                if(!d.avail){
+                alert("All slots are full!");
+                $(this).val("");
+                $("select[name='time']").attr("disabled",true);
+                }else{
+                $("select[name='time']").attr("disabled",false);
+                }
+              },
+              error:function(e){
+                alert(JSON.stringify(e));
+              }
+            });
+            $("select[name='time']").each(function(){
+            $.ajax({
+              type: "POST",
+              data: {"date": $("#dat").val(), "time": $(this).val()},
+              URL: "availappointments.php",
+              success: function(d){
+                if(!d.avail){
+                  $(this).attr("disabled",true);
+                }
+              }
+            });
+          });
+          })
+
       })
     </script>
     
