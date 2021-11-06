@@ -84,6 +84,7 @@ function secure($str){
                             </div>
                            <div class="row form-row">
                               <input id="dat" name="date" type="text" placeholder="Appointment Date" class="form-control" required>
+                              
                             </div>
                             <div class="row form-row">
                               <select name="time" placeholder="Appointment Time" class="form-control" required>
@@ -117,6 +118,8 @@ function secure($str){
 
                              <div class="row form-row">
                                <button class="btn btn-success btn-appointment">
+                                <span class="spinner-border spinner-border-sm" role="status" id="load" aria-hidden="true"></span>
+
                                 Book Appointment<br> <b>Total:  ₹<?=$doctor["fees"]?></b> 
                                </button>
                                
@@ -141,14 +144,23 @@ function secure($str){
 
     <script>
       $(document).ready(function(){
+          $("#load").hide();
           $("#dat").datepicker();
-          $("#dat").change(function(){
+          let flag = true;
+          $("#dat").on("keyup keypress",function(){
+            $("#load").show();
+            if(($(this).val().length <10) && !flag) return;
+            flag = false;
+            setTimeout(() => {
+              flag = true;
+            }, 1000);
             $.ajax({
               type: "POST",
               data: {"date": $(this).val()},
               dataType: "JSON",
               url: "availappointments.php",
               success: function(d){
+                $("#load").hide();
                 if(!d.avail){
                 alert("All slots are full!");
                 $(this).val("");
@@ -168,6 +180,7 @@ function secure($str){
               URL: "availappointments.php",
               success: function(d){
                 if(!d.avail){
+                  $("#load").hide();
                   $(this).attr("disabled",true);
                 }
               }
