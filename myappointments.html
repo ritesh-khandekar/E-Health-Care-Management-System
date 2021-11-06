@@ -5,6 +5,8 @@ $login = false;
 if(islogin()){
    global $login;
    $login = true;
+}else{
+   header("location: login.html");
 }
 ?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
