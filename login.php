@@ -26,7 +26,7 @@ $next = urlencode($nexturl);
             $type = $row["type"];
             $uid = $row["id"];
         }
-        login($fname,$lname,$email,$gender,$type=="DOCTOR",$type=="ADMIN");
+        login($fname,$lname,$email,$gender,$type=="DOCTOR",$type=="ADMIN",$uid);
         if($next!='') {header("location: $nexturl");return;}
         header("location: patienthome.html?success");
         return;
@@ -42,7 +42,7 @@ $next = urlencode($nexturl);
         $str = mysqli_real_escape_string($con,$str);
         return $str;
     }
-    function login($fname,$lname,$email,$gender,$booldoctor,$booladmin){
+    function login($fname,$lname,$email,$gender,$booldoctor,$booladmin,$uid){
 
         $_SESSION["hms_login"] = true;
         $_SESSION["hms_login_fname"] = $fname;
