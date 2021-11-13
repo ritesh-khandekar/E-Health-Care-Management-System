@@ -53,6 +53,9 @@ if(islogin()){
          $uid = $_SESSION["hms_user_id"];
          $q = "SELECT doctors.*,appointments.* FROM appointments INNER JOIN doctors ON appointments.`doc-id` = doctors.`doc-id` WHERE patientid='$uid' ORDER BY appointments.count DESC";
          $q = $con->query($q);
+         if(0==mysqli_num_rows($q)){
+           echo "Nothing found Here!";
+         }
          while($row=mysqli_fetch_array($q)){
              $i++;
            echo '<a class="btn btn-primary p-2 m-1 w-50" type="submit" href="appointment/donepayment.html?appointmentid='.$row["id"].'">'.$row["date"].' with Dr. '.$row["name"].' '.$row["lname"].'</a>';

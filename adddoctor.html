@@ -200,6 +200,8 @@ function getRandomHex($num_bytes=4) {
       <h2 class="ml-4 w-50">  ADD DOCTOR:</h2>
       <div data-silex-type="html-element" class="editable-style html-element silex-id-1634725938274-3 page-home paged-element" data-silex-id="silex-id-1634725938274-3" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <form method="post" action=""  enctype="multipart/form-data">
+   <link  href="./dist/cropper.css" rel="stylesheet">
+<script src="./dist/cropper.js"></script>
    <div class="p-4">
       
       <div class="form-row">
@@ -274,4 +276,29 @@ function getRandomHex($num_bytes=4) {
       <button class="btn btn-primary p-3 mx-auto " name="formsubmit" value="add" type="submit">Add Doctor</button>
 
 </div></form></div></div>
-<div data-silex-type="image-element" class="editable-style image-element silex-id-1634727392144-4 page-home paged-element" data-silex-id="silex-id-1634727392144-4" style=""><img src="<?= $imgsrc ?>" id="imgdoc"></div></body></html>
+<div data-silex-type="image-element" class="editable-style image-element silex-id-1634727392144-4 page-home paged-element" data-silex-id="silex-id-1634727392144-4" style="">
+   <div><img src="" id="imgdoc"></div>
+   <script>
+      const image = document.getElementById('imgdoc');
+const cropper = new Cropper(image, {
+  aspectRatio: 1,
+  crop(event) {
+    console.log(event.detail.x);
+    console.log(event.detail.y);
+    console.log(event.detail.width);
+    console.log(event.detail.height);
+    console.log(event.detail.rotate);
+    console.log(event.detail.scaleX);
+    console.log(event.detail.scaleY);
+  },
+});
+   </script>
+   <style>
+      img {
+  display: block;
+
+  /* This rule is very important, please don't ignore this */
+  max-width: 100%;
+}
+   </style>
+</div></body></html>
