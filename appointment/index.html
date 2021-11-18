@@ -83,7 +83,7 @@ function secure($str){
                               <input type="text" name="email" placeholder="Enter Email Adreess" class="form-control" value="<?= $_SESSION['hms_login_email']?>" required>
                             </div>
                            <div class="row form-row">
-                              <input id="dat" name="date" type="text" placeholder="Appointment Date" class="form-control" required>
+                              <input id="dat" name="date" type="text" placeholder="Appointment Date" pattern="[01][12]\/[0132][0-9]\/2021" class="form-control" required>
                               
                             </div>
                             <div class="row form-row">

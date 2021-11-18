@@ -15,6 +15,7 @@ else
     header("location: ../");
 }
 require ("../conn.php");
+$status = "false";
 if (isset($_GET["appointmentid"]))
 {
     $appid = secure($_GET["appointmentid"]);
@@ -68,6 +69,7 @@ if (isset($_GET["appointmentid"]))
     $date = $appo['date'];
     $time = $appo['time'];
     $id = $appo['id'];
+    $status = $appo['done'];
 }
 else
 {
@@ -123,7 +125,7 @@ else
 
         $id = getRandomHex(20);
         $fees = $doctor["fees"];
-        $q = "INSERT INTO appointments VALUES ('','$docid','$uid','$date','$time','$area','$city','$state','$postalcode','$id','PAID','$fees')";
+        $q = "INSERT INTO appointments VALUES ('','$docid','$uid','$date','$time','$area','$city','$state','$postalcode','$id','PAID','$fees','false')";
         if ($con->query($q))
         {
 
@@ -251,12 +253,30 @@ endif ?>
       <td>Appointment ID</td>
       <td><b><?=$id ?></b></td>
     </tr>
+    <tr>
+      <td>Done</td>
+      <td><b><?=$status ?></b></td>
+    </tr>
   </tbody>
 </table>
 
 
 <div class="text-center w-100">
-  <div id="qrcode" class="m-2"></div><br>
+  <div class="row">
+  <div id="qrcode" class="m-2 col"></div>
+  <div class="col"></div>
+  
+  <div class="col-lg-6 text-success">
+    <?php
+    if($status=="true"):?>
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+      <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+    </svg>
+    <div class="text-success h4">Done</div>
+    <?php endif?>
+    
+  </div>
+  </div>
   <button class="printhide btn btn-primary p-2 m-2 w-25" onclick="printdiv('printarea')"> Print </button>
 </div>
 <script src="assets/js/qrcode.js"></script>
