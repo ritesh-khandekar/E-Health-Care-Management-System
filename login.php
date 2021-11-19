@@ -10,10 +10,14 @@ $next = urlencode($nexturl);
     if($email=="" || $pass==""){
         $_SESSION["last_login_email"] = secure($email);
         if($type == "ADMIN" ) {header("location: adminlogin.html?valerrno=0&next=$next");return;};
+        if($type == "PHARMACY" ) {header("location: pharmacylogin.html?valerrno=0&next=$next");return;};
+       
         header($type == "DOCTOR" ?"location: doctorlogin.html?valerrno=0&next=$next": "location: patientlogin.html?valerrno=0&next=$next");
         return;
     }
     require("conn.php");
+    $pharmacy = $type=="PHARMACY";
+    $type = $type=="PHARMACY"?"ADMIN":$type;
     $q = "SELECT * FROM users WHERE type='$type' AND email='$email' AND password='$pass'";
     $res = $con->query($q);
     
@@ -26,7 +30,7 @@ $next = urlencode($nexturl);
             $type = $row["type"];
             $uid = $row["id"];
         }
-        login($fname,$lname,$email,$gender,$type=="DOCTOR",$type=="ADMIN",$uid);
+        login($fname,$lname,$email,$gender,$type=="DOCTOR",$type=="ADMIN",$uid,$pharmacy);
         if($next!='') {header("location: $nexturl");return;}
         header("location: patienthome.html?success");
         return;
@@ -42,8 +46,7 @@ $next = urlencode($nexturl);
         $str = mysqli_real_escape_string($con,$str);
         return $str;
     }
-    function login($fname,$lname,$email,$gender,$booldoctor,$booladmin,$uid){
-
+    function login($fname,$lname,$email,$gender,$booldoctor,$booladmin,$uid,$pharmacy){
         $_SESSION["hms_login"] = true;
         $_SESSION["hms_login_fname"] = $fname;
         $_SESSION["hms_login_lname"] = $lname;
@@ -52,5 +55,8 @@ $next = urlencode($nexturl);
         $_SESSION["hms_doctor"] = $booldoctor;
         $_SESSION["hms_admin"] = $booladmin;
         $_SESSION["hms_user_id"] = $uid;
+        if($pharmacy){
+            $_SESSION["hms_pharmacy"] = true;
+        }
     }
 ?>

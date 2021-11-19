@@ -5,6 +5,9 @@ if(!isset($_SESSION["hms_login"])){
 }else{
   $login= true;
 }
+if(isset($_SESSION["hms_pharmacy"]) && $_SESSION["hms_pharmacy"]){
+  header("location: ./adminlogin.html");
+ }
 /**   if($_SESSION["hms_doctor"]){
       echo $_SESSION["hms_doctor"];
       header("location: doctorhome.html?".$_SERVER['QUERY_STRING']);

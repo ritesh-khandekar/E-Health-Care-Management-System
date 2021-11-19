@@ -5,6 +5,9 @@ $login = false;
 if(islogin()){
    global $login;
    $login = true;
+   if(isset($_SESSION["hms_pharmacy"]) && $_SESSION["hms_pharmacy"]){
+    header("location: ./pharmacyhome.html");
+   }
    if(!$_SESSION["hms_admin"]){
        header("location: ./");
    }

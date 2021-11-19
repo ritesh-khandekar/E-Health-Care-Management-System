@@ -61,6 +61,11 @@ if(islogin()){
                 Administrator Login
             </a>
         </div>
+        <div class="text-center w-100">
+          <a href="./pharmacylogin.html<?=$next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
+              Pharmacy Login
+          </a>
+      </div>
         <small><div class="pt-4 mt-4"><?=$next!='' ? '<b>Next URL: </b><div class="text-info d-inline">'.$next.'</div>':''?></div></small>
     </main>
     <footer class="container">
