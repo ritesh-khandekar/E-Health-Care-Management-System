@@ -44,6 +44,24 @@ if(islogin()){
       </nav>
       <br>
     <main class="container p-2 pt-4 mt-4">
+      <div class="d-none">
+        <div class="h3 text-primary m-4">Selected Medicines:</div>
+        <table class="table table-bordered table-striped" id="updatetable">
+          <thead>
+            <tr>
+              <th>Medicine Name</th>
+              <th>Description</th>
+              <th>Remaining</th>
+              <th>Price</th>
+              <th>Medicine ID</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
         <div class="h3 text-primary m-4">Available Medicines:</div>
         <input class="form-control my-2" id="myInput" type="text" placeholder="Search Medicines..">
   <br>
@@ -56,7 +74,7 @@ if(islogin()){
         <th>Remaining</th>
         <th>Price</th>
         <th>Medicine ID</th>
-        <th>Buy</th>
+        <th>Quantity</th>
       </tr>
     </thead>
     <tbody>
@@ -75,7 +93,9 @@ if(islogin()){
                 echo "<td>".$row["price"]."</td>";
                 echo "<td data-id='".$row["medicineid"]."'>".substr($row["medicineid"],0,20)."...</td>";
                 echo "<td>";
-                echo '<button class="btn btn-outline-success">Buy</button>';
+                echo '<button class="btn btn-outline-success" data-action="add"><b>+</b></button>';
+                echo '<input type="number" class="m-1" style="width: 80px;" value="0">';
+                echo '<button class="btn btn-outline-danger" data-action="remove"><b>-</b></button>';
                 echo "</td>";
                 echo "</tr>";
             }
@@ -89,6 +109,15 @@ if(islogin()){
         <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
       </footer>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script>
+        $("table tbody tr td button").each(function(){
+          if($(this).attr("data-action")=="add"){
+
+          }else if($(this).attr("data-action")=="add"){
+
+          }
+        })
+      </script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>    
 </body>

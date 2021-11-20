@@ -20,7 +20,7 @@ if(islogin()){
         $json["data"] = explode(",",$json["data"]);
         $name = $json["data"][0];
         $desc = $json["data"][1];
-        var_dump($json["data"]);
+        
         $unit =(int) $json["data"][2];
         $price =(int) $json["data"][3];
         $q = "INSERT INTO pharmacy VALUES('','$id','$name','$desc',$unit,$price)";
