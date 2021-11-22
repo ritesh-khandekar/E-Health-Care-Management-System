@@ -5,10 +5,9 @@ E-HEALTH CARE MANAGEMENT SYSTEM
         <p>
             People can take appointments online by approaching the website. That site also includes Information about the Facilities, Specialties available in every Medicare Branch. So they can also send their problems about their health and get some useful tips from the doctors.
         </p>
-<code>
         <b>httpd-xampp.conf:</b>
-
+<pre>
 <FilesMatch "\.html$">
     SetHandler application/x-httpd-php
 </FilesMatch>
-</code>
+</pre>
