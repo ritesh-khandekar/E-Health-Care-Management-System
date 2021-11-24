@@ -47,7 +47,7 @@ if(islogin()){
       </nav>
       <br>
     <main class="container p-2 pt-4 mt-4">
-
+      
     </main>
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>

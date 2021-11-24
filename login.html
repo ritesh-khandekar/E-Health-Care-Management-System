@@ -1,6 +1,5 @@
 <?php
 require("methods.php");
-session_start();
 $next = isset($_SERVER["HTTP_REFERER"]) ? $_SERVER["HTTP_REFERER"]:'';
 $next = isset($_GET['next'])?$_GET['next']:'';
 $login = false;

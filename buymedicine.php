@@ -15,6 +15,16 @@ $time = (int) time();
 $price = (int) $_SESSION["hms_medicines_price"];
 $paymentid = getRandomHex(80);
 require("conn.php");
+foreach($_SESSION["hms_medicines"] as $med){
+    $id = $med['dataid'];
+    $q = "SELECT * FROM pharmacy WHERE medicineid = '$id'";
+    $q = $con->query($q);
+    $info = mysqli_fetch_array($q)[4];
+    $unit = (int) $info;
+    $unit = $unit - $med["quantity"];
+    $q = "UPDATE pharmacy SET unit=$unit WHERE medicineid='$id'";
+    $con->query($q);
+}
 $q = "INSERT INTO medicines VALUES('',$time,$uid,'$strmedicines',$price,'$paymentid')";
 if($con->query($q)){
     echo '{"success":"true","paymentid":"'.$paymentid.'"}';

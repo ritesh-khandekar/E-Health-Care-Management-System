@@ -1,6 +1,5 @@
 <?php
 require("methods.php");
-session_start();
 $login = false;
 if(islogin()){
    global $login;
@@ -149,7 +148,6 @@ if(islogin()){
                     data: {"data":JSON.stringify(data)},
                     success:function(d){
                         if(d=="true"){
-                            
                             alert("Medicine Updated Successfully!")
                             $this.parent().parent().find("td:lt(4)").each(function(td){
                                     let val = $(this).find("input").val();
