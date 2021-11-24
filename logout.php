@@ -13,6 +13,7 @@
         unset($_SESSION["hms_doctor"]);
         unset($_SESSION["hms_admin"]);
         unset($_SESSION["last_login_email"]);
+        unset($_SESSION["hms_pharmacy"]);
         echo "<body><h1 style='margin: 0 auto;display:table'>Logged out!</h1></body>";
         echo "<script>setTimeout(function(){window.location.href = 'home.html';},1000)</script>";
         return;
