@@ -95,7 +95,6 @@ if(!isset($_SESSION["hms_login"])){
         require("conn.php");
         $price = 0;
         $meds = $_SESSION["hms_medicines"];
-        var_dump($meds);
         foreach($meds as $o){
         $id = $o["dataid"];
         $quan = $o["quantity"];

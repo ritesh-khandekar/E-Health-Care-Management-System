@@ -78,10 +78,11 @@ if(isset($_GET["paymentid"])){
   <tbody>
 
   <?php
-    if($_SESSION["hms_user_id"]==$row["uid"][0]){
+    if($_SESSION["hms_user_id"]==$row["uid"]){
       $meds = $row["medicines"];
       $meds = json_decode($meds,true);
       $total = 0;
+      $datetime = $row["time"];
       foreach($meds as $med){
           $medid = $med["dataid"];
           $medq = $med["quantity"];
@@ -109,7 +110,9 @@ if(isset($_GET["paymentid"])){
 <pre class="p-3 mt-4">
 <b>Patient Name:</b> <?=$_SESSION["hms_login_fname"]." ".$_SESSION["hms_login_lname"]?><br>
 <b>Payment ID:</b> <?=$pid?><br>
-<b>Total:</b> <?=$total?>
+<b>Date: </b> <?=date("m-d-Y",$datetime)?><br>
+<b>Time: </b> <?=date("h:i:s",$datetime)?><br>
+<b>Total:</b> <?=$total?><br>
 </pre>
       
       <div class="w-100 text-center"><button class="btn btn-primary" onclick="window.print()">Print</button></div>
