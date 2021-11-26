@@ -61,7 +61,7 @@
          <div data-silex-type="container-element" class="editable-style silex-element-content silex-id-1478366444112-0 container-element website-width" data-silex-id="silex-id-1478366444112-0" style="">
             <div data-silex-type="text-element" class="editable-style silex-id-1537542841131-2 text-element header" data-silex-id="silex-id-1537542841131-2" style="" href="null">
                <div class="silex-element-content normal">
-                  <h3>E-HEALTH-CARE MANAGEMENT SYSTEM<br><br></h3>
+                  <h3>HOSPITAL MANAGEMENT SYSTEM<br><br></h3>
                   <h3></h3>
                   <h3></h3>
                </div>

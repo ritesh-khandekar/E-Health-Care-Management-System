@@ -6,10 +6,11 @@ for htmlfile in files:
     text = ""
     with open(htmlfile,"r") as f:
         text = f.read()
-    text=text.replace(".html",".php")
+    text=text.replace("E-HEALTH-CARE MANAGEMENT SYSTEM","HOSPITAL MANAGEMENT SYSTEM")
+
     with open(htmlfile,"w") as f:
         f.write(text)
-    try:
-        os.rename(htmlfile,htmlfile.replace(".html",".php"))
-    except:
-        print(htmlfile)
+    # try:
+    #     os.rename(htmlfile,htmlfile.replace(".html",".php"))
+    # except:
+    #     print(htmlfile)

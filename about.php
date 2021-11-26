@@ -13,12 +13,12 @@ if(islogin()){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About E-HEALTH-CARE MANAGEMENT SYSTEM</title>
+    <title>About HOSPITAL MANAGEMENT SYSTEM</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body class="pt-4">
     <nav class="navbar navbar-expand-lg p-3 fixed-top navbar-light bg-white shadow-sm" >
-        <a class="navbar-brand h5" href="#">E-HEALTH-CARE MANAGEMENT SYSTEM</b>
+        <a class="navbar-brand h5" href="#">HOSPITAL MANAGEMENT SYSTEM</b>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@ if(islogin()){
       <br>
     <main class="container p-2 pt-4 mt-4">
         <h2 class="text-primary pd-3">
-            INTRODUCTION OF E-HEALTH CARE MANAGEMANT SYSTEM
+            INTRODUCTION OF HOSPITAL MANAGEMANT SYSTEM
         </h2>
         <p class="text-black h5 py-3">
             This project deals with the Healthcare Management. This project is very helpful to both Medicare staff as well as to the public. All the branches of the Medicare can be integrated with one to another. So any body can get the status of each branch easily from the Medicare center.

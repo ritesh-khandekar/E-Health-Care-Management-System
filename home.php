@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-HEALTH-CARE MANAGEMENT SYSTEM</title>
+    <title>HOSPITAL MANAGEMENT SYSTEM</title>
     <style>
 body {
     background-image:url("background.jpg");
@@ -39,7 +39,7 @@ body:before {
 </head>
 <body class="pt-4">
     <nav class="navbar navbar-expand-lg p-3 fixed-top navbar-light bg-white shadow-sm" >
-        <a class="navbar-brand h5" href="#">E-HEALTH-CARE MANAGEMENT SYSTEM</b>
+        <a class="navbar-brand h5" href="#">HOSPITAL MANAGEMENT SYSTEM</b>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
