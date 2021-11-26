@@ -5,11 +5,11 @@ if(!isset($_SESSION["hms_login"])){
 }
    if($_SESSION["hms_doctor"]){
       echo $_SESSION["hms_doctor"];
-      header("location: doctorhome.html?".$_SERVER['QUERY_STRING']);
+      header("location: doctorhome.php?".$_SERVER['QUERY_STRING']);
       return;
    }
    if($_SESSION["hms_admin"]){
-      header("location: adminhome.html?".$_SERVER['QUERY_STRING']);
+      header("location: adminhome.php?".$_SERVER['QUERY_STRING']);
       return;
    }
    require("methods.php");
@@ -19,7 +19,7 @@ if(!isset($_SESSION["hms_login"])){
       $login = true;
    }
    if(!isset($_SESSION["hms_medicines"])){ 
-    header("location: pharmacy.html"); 
+    header("location: pharmacy.php"); 
     return;}
 ?>
 <!DOCTYPE html>
@@ -41,17 +41,17 @@ if(!isset($_SESSION["hms_login"])){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
             <?php
                if($login):
                ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.html">REGISTER</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.html">LOGIN</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.php">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.php">LOGIN</a></li>
             <?php endif ?>
           </ul>
           

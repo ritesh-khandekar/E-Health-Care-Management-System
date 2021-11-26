@@ -5,11 +5,11 @@ if(!isset($_SESSION["hms_login"])){
 }
    if($_SESSION["hms_doctor"]){
       echo $_SESSION["hms_doctor"];
-      header("location: doctorhome.html?".$_SERVER['QUERY_STRING']);
+      header("location: doctorhome.php?".$_SERVER['QUERY_STRING']);
       return;
    }
    if($_SESSION["hms_admin"]){
-      header("location: adminhome.html?".$_SERVER['QUERY_STRING']);
+      header("location: adminhome.php?".$_SERVER['QUERY_STRING']);
       return;
    }
 ?>
@@ -32,11 +32,11 @@ if(!isset($_SESSION["hms_login"])){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="pharmacy.html">PHARMACY</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="pharmacy.php">PHARMACY</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
         </ul>
           
@@ -54,22 +54,22 @@ if(!isset($_SESSION["hms_login"])){
         <div class="h4 py-3">WELCOME TO HOSPITAL MANAGEMENT SYSTEM DASHBOARD:</div>
         <div class="row">
             <div class="col-lg-7">
-                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./home.html">
+                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./home.php">
                     <b class="h4">HOME</b>
                 </a>
-                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./dashboard.html">
+                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./dashboard.php">
                     <b class="h4">DASHBOARD</b>
                 </a>
-                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./alldoctors.html">
+                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./alldoctors.php">
                     <b class="h4">ALL DOCTORS</b>
                 </a>
-                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./medicines.html">
+                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./medicines.php">
                     <b class="h4">MEDICINES</b>
                 </a>
-                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./myappointments.html">
+                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./myappointments.php">
                     <b class="h4">MY APPOINTMENTS</b>
                 </a>
-                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./myaccount.html">
+                <a class="btn btn-primary p-4 m-2 w-75 text-white" href="./myaccount.php">
                     <b class="h4">MY ACCOUNT</b>
                 </a>
                 <br><br><br>

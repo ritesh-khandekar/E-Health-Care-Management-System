@@ -28,17 +28,17 @@ if(islogin()){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="pharmacy.html">PHARMACY</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="pharmacy.php">PHARMACY</a></li>
             <?php
                if($login):
                ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.html">REGISTER</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.html">LOGIN</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.php">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.php">LOGIN</a></li>
             <?php endif ?>
           </ul>
           
@@ -63,7 +63,7 @@ if(islogin()){
                 echo '<div class="row mx-auto">';
             }
             echo '<div class="col-sm-4 my-2 my-lg-0">';
-                echo '<summary class="card shadow-sm" style="width: 18rem;" onclick="window.location.href = \'info.html?doctorid='.$row["doc-id"].'\'">';
+                echo '<summary class="card shadow-sm" style="width: 18rem;" onclick="window.location.href = \'info.php?doctorid='.$row["doc-id"].'\'">';
                     echo '<img class="card-img-top border-bottom border-primary" height="300px" src="'.$row["imagesrc"].'" alt="">';
                     echo '<div class="card-body">';
                         echo '<h4 class="card-text">Dr. '.$row["name"].' '.$row["lname"].'</h4>';

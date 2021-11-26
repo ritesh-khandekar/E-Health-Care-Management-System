@@ -6,7 +6,7 @@ if(isset($_SESSION["hms_login"])){
     header("location: ../");
   }
   if(!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"])){
-    header("location: ../alldoctors.html");
+    header("location: ../alldoctors.php");
   }
    global $login;
    $login = true;
@@ -31,7 +31,7 @@ $postalcode = secure($_POST['postalcode']);
 $q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
 $doc = $con->query($q);
 if(mysqli_num_rows($doc)<1){
-  header("location: ../alldoctors.html");
+  header("location: ../alldoctors.php");
   return;
 }
 $doctor=1;
@@ -45,7 +45,7 @@ $sessionlname = secure($_SESSION["hms_login_lname"]);
 $q = "SELECT id FROM users WHERE `fname`='$sessionfname' AND `lname`='$sessionlname' AND `email`='$sessionemail'";
 $user = $con->query($q);
 if(mysqli_num_rows($user)<1){
-  header("location: ../alldoctors.html");
+  header("location: ../alldoctors.php");
   return;
 }
 $hms_user=1;
@@ -140,10 +140,10 @@ function secure($str){
                </div>
             </div><div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
-                  <p><a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../HOME'.toLowerCase()+'.html'">HOME</a>
- <a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
-<a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../PATIENTHOME'.toLowerCase()+'.html'">DASHBOARD</a>
-<a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../LOGOUT'.toLowerCase()+'.html'">LOGOUT</a>
+                  <p><a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../HOME'.toLowerCase()+'.php'">HOME</a>
+ <a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../allDOCTORS'.toLowerCase()+'.php'">ALL_DOCTORS</a>
+<a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../PATIENTHOME'.toLowerCase()+'.php'">DASHBOARD</a>
+<a style="color: #fff;cursor:pointer;text-decoration:none" onclick="window.location.href='../LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
 </p>
                </div>
             </div></div>
@@ -157,7 +157,7 @@ function secure($str){
 <div class="subject">DailyUI #002 <br><strong>Credit Card Checkout</strong></div>
 
 <div class="checkout">
-  <form method="POST" id="formpayment" action="donepayment.html">
+  <form method="POST" id="formpayment" action="donepayment.php">
     <?php
     foreach($_POST as $key => $val){
       echo '<input type="hidden" name="'.secure($key).'" value="'.secure($val).'"/>';
@@ -322,7 +322,7 @@ function secure($str){
     setTimeout(() => {
       document.querySelector("#formpayment").submit();
     }, 6000);
-    window.open('gateway.html','_blank');
+    window.open('gateway.php','_blank');
   }
 </script>
 </div></div></div></section>

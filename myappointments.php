@@ -6,7 +6,7 @@ if(islogin()){
    global $login;
    $login = true;
 }else{
-   header("location: login.html");
+   header("location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -28,17 +28,17 @@ if(islogin()){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
             <?php
                if($login):
                ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.html">REGISTER</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.html">LOGIN</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.php">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.php">LOGIN</a></li>
             <?php endif ?>
           </ul>
           
@@ -59,7 +59,7 @@ if(islogin()){
          }
          while($row=mysqli_fetch_array($q)){
              $i++;
-           echo '<a class="btn '.($row["done"]!="true"?"btn-primary":"btn-outline-success").' p-2 m-1 w-50" type="submit" href="appointment/donepayment.html?appointmentid='.$row["id"].'">'.$row["date"].' with Dr. '.$row["name"].' '.$row["lname"].($row["done"]!="true"? '':$t).'</a>';
+           echo '<a class="btn '.($row["done"]!="true"?"btn-primary":"btn-outline-success").' p-2 m-1 w-50" type="submit" href="appointment/donepayment.php?appointmentid='.$row["id"].'">'.$row["date"].' with Dr. '.$row["name"].' '.$row["lname"].($row["done"]!="true"? '':$t).'</a>';
          }
          ?>
          <?php

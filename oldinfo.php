@@ -1,12 +1,12 @@
 <?php
-if(!isset($_GET['doctorid'])) header("location: alldoctors.html");
+if(!isset($_GET['doctorid'])) header("location: alldoctors.php");
 require("conn.php");
 $docid = secure($_GET['doctorid']);
 
 $q = "SELECT * FROM doctors WHERE `doc-id`='$docid'";
 $doc = $con->query($q);
 if(mysqli_num_rows($doc)<1){
-  header("location: alldoctors.html");
+  header("location: alldoctors.php");
   return;
 }
 $doctor=1;
@@ -106,18 +106,18 @@ if(isset($_SESSION["hms_login"])){
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
-                <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
-                  <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.html'">ABOUT</a>
+                <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.php'">HOME</a>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='ABOUT'.toLowerCase()+'.php'">ABOUT</a>
                   <?php
                   if($login):
                   ?>
-                  <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.html'">DASHBOARD</a>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.php'">DASHBOARD</a>
                   
                   <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
                   
                   <?php else: ?> 
-                  <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
-                  <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.php'">LOGIN</a>
+                  <a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.php'">REGISTER</a>
                   <?php endif ?>
                </p>
                </div>

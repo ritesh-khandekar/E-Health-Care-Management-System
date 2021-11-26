@@ -69,7 +69,7 @@
             $con->query($q);
             echo "success";
             exit();
-            //header("location: adminhome.html?docadded");
+            //header("location: adminhome.php?docadded");
             //echo "The file ". htmlspecialchars( basename( $_FILES["filename"]["name"])). " has been uploaded.";
          } else {
             echo "Sorry, there was an error uploading your file.";
@@ -112,10 +112,10 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
-               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
+               <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
                <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             </ul>
          </div>
@@ -253,7 +253,7 @@
         //localStorage.setItem("hms_doc_img_temp",url);
         cp(url);
         boxbtn.click();
-        //cbox.setAttribute("data","imgcrop.html");
+        //cbox.setAttribute("data","imgcrop.php");
 
         //document.querySelector("#imgdoc").src = URL.createObjectURL(file)
         }
@@ -295,7 +295,7 @@
             fd.delete("filename");
             fd.append("filename",(imgblob));
             $.ajax({
-                        url: "adddoctor.html",
+                        url: "adddoctor.php",
                         type: "POST",
                         data: fd,
                         processData: false,
@@ -303,9 +303,9 @@
                         success: function (d) {
                            if(d=="success"){
                               $("form").find("input").val("");
-                              window.location.href="adminhome.html?docadded";
+                              window.location.href="adminhome.php?docadded";
                            }else{
-                              $("#errdata").html("<div class='alert alert-danger'>"+d+"</div>")
+                              $("#errdata").php("<div class='alert alert-danger'>"+d+"</div>")
                            }
                         },
                         error: function () {

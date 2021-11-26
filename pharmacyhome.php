@@ -5,7 +5,7 @@ if(islogin()){
    global $login;
    $login = true;
    if(isset($_SESSION["hms_pharmacy"]) && $_SESSION["hms_pharmacy"]){}else{
-    header("location: ./pharmacylogin.html");
+    header("location: ./pharmacylogin.php");
    }
    if(!$_SESSION["hms_admin"]){
        header("location: ./");
@@ -31,17 +31,17 @@ if(islogin()){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
             <?php
                if($login):
                ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.html">REGISTER</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.html">LOGIN</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.php">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.php">LOGIN</a></li>
             <?php endif ?>
           </ul>
           
@@ -114,7 +114,7 @@ if(islogin()){
   </table>
   
         <div class="row py-3 my-4">
-        <a href="myaccount.html" class="btn btn-primary p-3 m-2 col-md-4">Change Password</a>
+        <a href="myaccount.php" class="btn btn-primary p-3 m-2 col-md-4">Change Password</a>
         </div>
     </main>
     <footer class="container">
@@ -194,7 +194,7 @@ if(islogin()){
                       url:'medicines.php',
                       data: {"data":JSON.stringify(data),"insertdata":true},
                       success:function(d){
-                        
+                        alert(d)
                           if(d=="true"){
                             
                               alert("Medicine Added");

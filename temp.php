@@ -134,18 +134,18 @@
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
-                  <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
- <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
+                  <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.php'">HOME</a>
+ <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.php'">ALL_DOCTORS</a>
  <!--?php
  if($login):
  ?-->
- <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.html'">DASHBOARD</a>
+ <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.php'">DASHBOARD</a>
  
  <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
  
  <!--?php else: ?--> 
-<a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
-<a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
+<a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.php'">REGISTER</a>
+<a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.php'">LOGIN</a>
 <!--?php endif  ?-->
 </p>
                </div>

@@ -1,17 +1,4 @@
-<?php
-require("methods.php");
-$login = false;
-if(islogin()){
-   global $login;
-   $login = true;
-   if(isset($_SESSION["hms_pharmacy"]) && $_SESSION["hms_pharmacy"]){
-    header("location: ./pharmacyhome.html");
-   }
-   if(!$_SESSION["hms_admin"]){
-       header("location: ./");
-   }
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,17 +18,17 @@ if(islogin()){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
             <?php
                if($login):
                ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.html">REGISTER</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.html">LOGIN</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.php">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="login.php">LOGIN</a></li>
             <?php endif ?>
           </ul>
           
@@ -49,29 +36,7 @@ if(islogin()){
       </nav>
       <br>
     <main class="container p-2 pt-4 mt-4">
-        <?php
-        if(isset($_GET["success"])):
-        ?>
-        <div class="row">
-        <div class="alert alert-success col-md-4">Login Successful </div>
-      </div>
-        <?php endif ?>
-        <?php
-        if(isset($_GET["docadded"])):
-        ?>
-        <div class="row">
-        <div class="alert alert-success mw-50">Doctor Added </div>
-        </div>
-        <?php endif ?>
-        <div class="h3 text-primary"><b>Welcome to E-Health Care Management System</b></div>
-        <div class="row py-3 my-4">
-            <a href="./adddoctor.html" class="btn btn-primary p-3 m-2 col-md-4">Add new Doctor</a>
-<a href="register.html" class="btn btn-primary p-3 m-2 col-md-4">Add new Patient</a>
-<a href="alldoctors.html" class="btn btn-primary p-3 m-2 col-md-4">All Doctors</a>
-    <a href="allpatients.html" class="btn btn-primary p-3 m-2 col-md-4">All Patients</a>
-<a href="allappointments.html" class="btn btn-primary p-3 m-2 col-md-4">All Appointments</a>
-<a href="myaccount.html" class="btn btn-primary p-3 m-2 col-md-4">Change Password</a>
-        </div>
+
     </main>
     <footer class="container">
         <p class="float-right"><a href="#">Back to top</a></p>

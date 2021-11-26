@@ -27,17 +27,17 @@ if(islogin()){
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="pharmacy.html">PHARMACY</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.html">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="pharmacy.php">PHARMACY</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="alldoctors.php">ALL_DOCTORS</a></li>
             <?php
                if($login):
                ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="logout.php">LOGOUT</a></li>
             <?php else: ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.html">REGISTER</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="register.php">REGISTER</a></li>
             <?php endif ?>
           </ul>
           
@@ -47,22 +47,22 @@ if(islogin()){
     <main class="container p-2 pt-4 mt-4">
         <h3 class="text-warning mx-auto text-center">Please login to continue</h3>
         <div class="text-center w-100">
-            <a href="./patientlogin.html<?= $next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
+            <a href="./patientlogin.php<?= $next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
                 Patient Login
             </a>
         </div>
         <div class="text-center w-100">
-            <a href="./doctorlogin.html<?= $next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
+            <a href="./doctorlogin.php<?= $next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
                 Doctor Login
             </a>
         </div>
         <div class="text-center w-100">
-            <a href="./adminlogin.html<?=$next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
+            <a href="./adminlogin.php<?=$next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
                 Administrator Login
             </a>
         </div>
         <div class="text-center w-100">
-          <a href="./pharmacylogin.html<?=$next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
+          <a href="./pharmacylogin.php<?=$next!='' ? '?next='.urlencode($next):''?>" class="btn btn-primary p-4 w-25 m-3">
               Pharmacy Login
           </a>
       </div>

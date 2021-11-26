@@ -1,3 +1,12 @@
+<?php
+require("methods.php");
+session_start();
+$login = false;
+if(islogin()){
+   global $login;
+   $login = true;
+}
+?>
 <!DOCTYPE html><html lang=""><head><script type="text/javascript" class="silex-json-styles" data-silex-static="">
     window.silex = window.silex || {}
     window.silex.data = {"site":{"width":1225},"pages":[{"id":"page-home","displayName":"Home","link":{"linkType":"LinkTypePage","href":"#!page-home"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-vacations","displayName":"Vacations","link":{"linkType":"LinkTypePage","href":"#!page-vacations"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-flights","displayName":"Flights","link":{"linkType":"LinkTypePage","href":"#!page-flights"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-hotels","displayName":"Hotels","link":{"linkType":"LinkTypePage","href":"#!page-hotels"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false},{"id":"page-contact","displayName":"Contact","link":{"linkType":"LinkTypePage","href":"#!page-contact"},"canDelete":true,"canProperties":true,"canMove":true,"canRename":true,"opened":false}]}</script>
@@ -15,7 +24,7 @@
       <link rel="stylesheet" href="https://editor.silex.me/static/2.12/front-end.css" data-silex-static="">
       <style type="text/css" class="silex-style">body .editable-style.column-section.container-element {padding: 0; margin: 0;}div.column-section {width: 100%; color: #33bbff;}div.column-section > a {width: 100%;}@media (min-width:481px) {.silex-editor div.column-section {padding: 50px 0;}div.column-section > a {width: 33.333%;}}</style>
       <script type="text/javascript" class="silex-script"></script>
-      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(255,255,255,1); position: static;}.silex-id-1478366444112-1 {background-color: transparent; min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: transparent; min-height: 92px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 355px; top: 5px; left: 49px; min-height: 108px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 664px; top: 28px; left: 515px; min-height: 55px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1634534459950-0 {width: 1109.802001953125px; min-height: 377px; background-color: rgb(255, 255, 255); position: absolute; top: 184px; left: 99px;}.silex-id-1634534513549-1 {width: 308px; min-height: 44.333335876464844px; position: absolute; top: 113px; left: 99px;}.silex-id-1634534760208-2 {width: 1206px; min-height: 35px; background-color: transparent; position: absolute; top: 149px; left: 99px;}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
+      <style class="silex-inline-styles" type="text/css">.body-initial {background-color: rgba(255,255,255,1); position: static;}.silex-id-1478366444112-1 {background-color: transparent; min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1478366444112-0 {background-color: transparent; min-height: 92px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1552765147494-1 {width: 33px; background-color: transparent; top: 100px; left: 686px; min-height: 27px; position: absolute;}.silex-id-1537545843556-0 {width: 231px; background-color: transparent; top: 0px; left: 0px; min-height: 90px; position: absolute;}.silex-id-1537542841131-2 {width: 206px; top: 5px; left: 49px; min-height: 115.4375px; position: absolute; opacity: 1; background-color: transparent;}.silex-id-1537543262916-6 {width: 664px; top: 17px; left: 535px; min-height: 55px; position: absolute; background-color: transparent;}.silex-id-1537729669184-95 {width: 100px; background-color: transparent; top: 3267px; left: 944px; min-height: 100px; position: absolute;}.silex-element-content.normal a{cursor:pointer}.card:hover{box-shadow:1px 1px 3px #959595;}.silex-id-1545056415237-3 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056415233-2 {min-height: 791px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056530213-6 {width: 276px; top: 0px; left: 0px; min-height: 139px; position: absolute;}.silex-id-1548870370847-0 {height: 496px; width: 777px; background-color: transparent; top: 132px; left: 0px; position: absolute;}.silex-id-1548871340538-0 {width: 400px; height: 488px; background-color: transparent; top: 136px; left: 800px; position: absolute;}.silex-id-1545056569614-8 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056569608-7 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056587321-9 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056612457-10 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056612458-11 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056612459-12 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1545056615878-13 {min-width: 1200px; position: static; margin-top: -1px;}.silex-id-1545056615879-14 {min-height: 517px; position: relative; margin-left: auto; margin-right: auto;}.silex-id-1545056615879-15 {width: 854px; top: 0px; left: 179px; min-height: 137px; position: absolute;}.silex-id-1632995709425-2 {width: 100px; min-height: 100px; position: absolute;}.silex-id-1633598767769-0 {width: 100px; min-height: 100px; background-color: rgb(255, 255, 255); position: absolute; top: 956.3333129882812px; left: 221.99999743700027px;}.silex-id-1633599106564-23 {position: static; background-color: rgba(224,230,246,1);}.silex-id-1633599106582-24 {min-height: 465.65625px; background-color: rgba(224,230,246,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633599129580-25 {width: 247px; top: 129.67689514160156px; left: 49.00028610229492px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute; border-width: 1px 1px 1px 1px; border-style: solid; border-color: transparent;}.silex-id-1633599179552-27 {width: 247px; top: 130.01036071777344px; left: 324px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599181033-28 {width: 247px; top: 130px; left: 605.9895629882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599188186-29 {width: 247px; top: 130px; left: 893.3333129882812px; background-image: url(240_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; background-color: rgba(133,133,133,1); min-height: 290px; position: absolute;}.silex-id-1633599236093-31 {width: 414px; min-height: 56px; position: absolute; top: 31px; left: 49px;}.silex-id-1633600577247-0 {position: static; background-color: rgba(136,219,247,1);}.silex-id-1633600577248-1 {min-height: 94px; background-color: rgba(136,219,247,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1633600620879-2 {width: 661px; min-height: 99px; position: absolute; top: -1.0102157592773438px; left: -1px; background-color: rgba(136,219,247,1);}.silex-id-1634012670955-1 {position: static; background-color: rgba(136,219,247,1);}.silex-id-1634012670956-2 {min-height: 269.59375px; background-color: rgba(136,219,247,1); position: relative; margin-left: auto; margin-right: auto;}.silex-id-1634012661412-0 {width: 1197px; min-height: 227px; position: absolute; top: -0.6562728881835938px; left: -1px; background-color: rgba(136,219,247,1);}@media only screen and (max-width: 480px) {.silex-id-1552765147494-1 {left: -12px; top: 11246px;}.silex-id-1537545843556-0 {top: 0px; left: 148px; width: 269px; min-height: 90px;}.silex-id-1537542841131-2 {top: 4px; left: 122px; width: 205px; min-height: 83px;}.silex-id-1545056415237-3 {top: 89px; left: 0px;}.silex-id-1545056415233-2 {min-height: 1543px;}.silex-id-1545056530213-6 {top: 56px; left: 11px; width: 424px; min-height: 139px;}.silex-id-1633599129580-25 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599179552-27 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599181033-28 {min-height: 424px; top: 0px; left: 0px; width: 380px;}.silex-id-1633599188186-29 {min-height: 424px; top: 0px; left: 0px; width: 380px;}}</style>
       <title></title>
       <link href="https://fontlibrary.org/face/glacial-indifference" rel="stylesheet" class="silex-custom-font">
       <style type="text/css" class="silex-style-settings">.website-width {width: 1225px;}@media (min-width: 481px) {.silex-editor {min-width: 1425px;}}</style>
@@ -67,55 +76,82 @@
                </div>
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1552765147494-1 text-element silex-component prevent-resizable hide-on-desktop hamburger-menu prevent-auto-z-index" data-silex-id="silex-id-1552765147494-1">
-               <div class="silex-element-content normal"><style>.hamburger-menu_1634534039225_42 {position: absolute; z-index: 20;}.silex-editor .hamburger-menu_1634534039225_42 nav {left: -9999px;}.hamburger-menu_1634534039225_42 nav ul {margin-top: 80px;}.hamburger-menu_1634534039225_42 nav {opacity: 0; position: absolute; background-color: #ededed; transition: left 1s ease, height 0s ease 1s; left: -300px; width: 300px; height: 20px;}.hamburger-menu_1634534039225_42.open nav {opacity: 1; height: 100vh; left: 0; transition: left 1s ease, height 0s ease 0s;}.hamburger-menu_1634534039225_42 .nav-container {z-index: 10; position: absolute;}.hamburger-menu_1634534039225_42.open .nav-container {}.hamburger-menu_1634534039225_42 .hamburger-btn {z-index: 20; cursor: pointer; position: absolute;}.hamburger-menu_1634534039225_42 .hamburger-btn span {display: block; width: 30px; height: 5px; margin-bottom: 3px; position: relative; background-color: #000000; border: 1px solid #ffffff; border-radius: 3px; transition: border-color 0.1s ease-in,
+               <div class="silex-element-content normal"><style>.hamburger-menu_1634013232415_115 {position: absolute; z-index: 20;}.silex-editor .hamburger-menu_1634013232415_115 nav {left: -9999px;}.hamburger-menu_1634013232415_115 nav ul {margin-top: 80px;}.hamburger-menu_1634013232415_115 nav {opacity: 0; position: absolute; background-color: #ededed; transition: left 1s ease, height 0s ease 1s; left: -300px; width: 300px; height: 20px;}.hamburger-menu_1634013232415_115.open nav {opacity: 1; height: 100vh; left: 0; transition: left 1s ease, height 0s ease 0s;}.hamburger-menu_1634013232415_115 .nav-container {z-index: 10; position: absolute;}.hamburger-menu_1634013232415_115.open .nav-container {}.hamburger-menu_1634013232415_115 .hamburger-btn {z-index: 20; cursor: pointer; position: absolute;}.hamburger-menu_1634013232415_115 .hamburger-btn span {display: block; width: 30px; height: 5px; margin-bottom: 3px; position: relative; background-color: #000000; border: 1px solid #ffffff; border-radius: 3px; transition: border-color 0.1s ease-in,
       opacity 0.1s ease-in,
       transform 0.1s ease-in,
-      background 0.1s ease-in;}.hamburger-menu_1634534039225_42.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1634534039225_42 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1634534039225_42.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1634534039225_42.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1634534039225_42 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1634534039225_42.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
+      background 0.1s ease-in;}.hamburger-menu_1634013232415_115.open .hamburger-btn span {border-color: rgba(255, 255, 255, 0);}.hamburger-menu_1634013232415_115 .hamburger-btn span:first-child {transform-origin: 4px -2px;}.hamburger-menu_1634013232415_115.open .hamburger-btn span:first-child {transform: rotate(45deg) translate(7px, -4px);}.hamburger-menu_1634013232415_115.open .hamburger-btn span:nth-last-child(2) {opacity: 0;}.hamburger-menu_1634013232415_115 .hamburger-btn span:nth-child(3) {transform-origin: -11px 4px;}.hamburger-menu_1634013232415_115.open .hamburger-btn span:nth-child(3) {transform: rotate(-45deg) translate(0, 12px);}</style>
 
+<script>
+(function() {
+  var isOpen = false;
+  function close() {
+    isOpen = false;
+    $('.hamburger-menu_1634013232415_115').removeClass('open');
+    $('.hamburger-menu_1634013232415_115').addClass('closed');
+  }
+  function open() {
+    isOpen = true;
+    $('.hamburger-menu_1634013232415_115').addClass('open');
+    $('.hamburger-menu_1634013232415_115').removeClass('closed');
+  }
+  function toggle() {
+    if(isOpen) close();
+    else open();
+  }
+  var silexElement = $('.hamburger-menu_1634013232415_115').closest('.editable-style');
+  function move(data) {
+    var offset = silexElement.offset();
+    $('.hamburger-menu_1634013232415_115 .nav-container').css({
+      'transform': 'translate(' + (data.scrollLeft - (offset.left/data.scale)) + 'px, ' + (data.scrollTop - (offset.top/data.scale)) + 'px)'
+    });
+  }
+  $('.hamburger-menu_1634013232415_115 .hamburger-btn').click(function() { toggle(); });
+  $(document).on('silex.scroll silex.resize', function(e) {
+    close();
+    move(window.silex);
+  });
+  close();
+})();
+</script>
 </div>
             </div>
             <div data-silex-type="text-element" class="editable-style silex-id-1537543262916-6 text-element header hide-on-mobile" data-silex-id="silex-id-1537543262916-6" style="" href="null">
                <div class="silex-element-content normal">
-                  <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.html'">HOME</a>
- <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.html'">ALL_DOCTORS</a>
-<a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.html'">REGISTER</a>
-<a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.html'">LOGIN</a>
+                  <p><a style="color: #000;text-decoration:none" onclick="window.location.href='HOME'.toLowerCase()+'.php'">HOME</a>
+ <a style="color: #000;text-decoration:none" onclick="window.location.href='allDOCTORS'.toLowerCase()+'.php'">ALL_DOCTORS</a>
+ <?php
+ if($login):
+ ?>
+ <a style="color: #000;text-decoration:none" onclick="window.location.href='patienthome'.toLowerCase()+'.php'">DASHBOARD</a>
+ 
+ <a style="color: #000;text-decoration:none" onclick="window.location.href='LOGOUT'.toLowerCase()+'.php'">LOGOUT</a>
+ 
+ <?php else: ?> 
+<a style="color: #000;text-decoration:none" onclick="window.location.href='REGISTER'.toLowerCase()+'.php'">REGISTER</a>
+<a style="color: #000;text-decoration:none" onclick="window.location.href='LOGIN'.toLowerCase()+'.php'">LOGIN</a>
+<?php endif  ?>
 </p>
                </div>
             </div>
          </div>
       </section>
 
-<div data-silex-type="text-element" class="editable-style text-element silex-id-1634534513549-1 page-home paged-element" data-silex-id="silex-id-1634534513549-1" style="" href="null"><div class="silex-element-content normal"><h3><b>ALL APPOINTMENTS:&nbsp;</b></h3><span class="_wysihtml-temp-caret-fix" style="position: absolute; display: block; min-width: 1px; z-index: 99999;">﻿</span></div></div><div data-silex-type="html-element" class="editable-style html-element silex-id-1634534760208-2 page-home paged-element" data-silex-id="silex-id-1634534760208-2" style=""><div class="silex-element-content"><hr></div></div><div data-silex-type="html-element" class="editable-style html-element silex-id-1634534459950-0 page-home paged-element" data-silex-id="silex-id-1634534459950-0" style=""><div class="silex-element-content"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<table class="table" style="margin: 0 auto">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Patient Name</th>
-      <th scope="col">Doctor Name</th>
-      <th scope="col">Date</th>
-      <th scope="col">Time</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>{NAME}</td>
-      <td>{DRNAME}</td>
-      <td>{DATE}</td>
-      <td>{TIME}</td>
-      <td>{ACTION}</td>
-    </tr>
+      
+<section data-silex-type="container-element" class="editable-style section-element silex-id-1633600577247-0 page-home paged-element" data-silex-id="silex-id-1633600577247-0"><div data-silex-type="container-element" class="editable-style container-element silex-id-1633600577248-1 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1633600577248-1" style=""><div data-silex-type="text-element" class="editable-style text-element silex-id-1633600620879-2" data-silex-id="silex-id-1633600620879-2" style="" href="null"><div class="silex-element-content normal"><h2><b style="color:blue">INTRODUCTION OF E-HEALTH CARE MANAGEMANT SYSTEM</b></h2><span class="_wysihtml-temp-caret-fix" style="position: absolute; display: block; min-width: 1px; z-index: 99999;">﻿</span></div></div></div></section><section data-silex-type="container-element" class="editable-style section-element silex-id-1634012670955-1 page-home paged-element" data-silex-id="silex-id-1634012670955-1"><div data-silex-type="container-element" class="editable-style container-element silex-id-1634012670956-2 silex-element-content website-width prevent-draggable" data-silex-id="silex-id-1634012670956-2" style=""><div data-silex-type="text-element" class="editable-style text-element silex-id-1634012661412-0" data-silex-id="silex-id-1634012661412-0" style=""><div class="silex-element-content normal">
+<p>
 
-  </tbody>
-</table></div></div><section data-silex-type="container-element" class="container-element editable-style section-element silex-id-1545056615878-13 prevent-resizable page-hotels paged-element" data-silex-id="silex-id-1545056615878-13">
-         <div data-silex-type="container-element" class="editable-style container-element silex-element-content website-width silex-id-1545056615879-14" data-silex-id="silex-id-1545056615879-14">
-            <div data-silex-type="text-element" class="editable-style text-element text-style-2 silex-id-1545056615879-15" data-silex-id="silex-id-1545056615879-15" style="">
-               <div class="silex-element-content normal">
-                  <h2>Your content Here<br></h2>
-               </div>
-               ﻿﻿
-            </div>
-         </div>
-      </section></body></html>
+</p><h3>This project deals with the
+Healthcare Management. This project is very helpful to both  Medicare 
+staff as well as to the public. All the branches of the Medicare can be
+integrated with one to another. So any body can get the status of each branch
+easily from the Medicare center.</h3><h3><br></h3><h3>People  can 
+take  appointments  online by approaching the website. That site
+also includes Information about the Facilities, Specialties available in every
+Medicare Branch. So they can also send their problems about their health and
+get some useful tips from the doctors.</h3><div>
+
+
+
+
+
+<p> <br></p></div></div></div></div></section></body></html>

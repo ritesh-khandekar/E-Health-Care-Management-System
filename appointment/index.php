@@ -6,22 +6,22 @@ if(isset($_SESSION["hms_login"])){
     header("location: ../");
   }
   if(!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"])){
-    header("location: ../alldoctors.html");
+    header("location: ../alldoctors.php");
   }
    global $login;
    $login = true;
 }else{
-  header("location: ../login.html?next=".urlencode($_SERVER["HTTP_REFERER"]));
+  header("location: ../login.php?next=".urlencode($_SERVER["HTTP_REFERER"]));
 
 }
-if(!isset($_GET['doctorid'])) header("location: ../alldoctors.html");
+if(!isset($_GET['doctorid'])) header("location: ../alldoctors.php");
 require("../conn.php");
 $docid = secure($_GET['doctorid']);
 $spec = secure($_GET['spec']);
 $q = "SELECT * FROM doctors WHERE `doc-id`='$docid' AND `spec`='$spec'";
 $doc = $con->query($q);
 if(mysqli_num_rows($doc)<1){
-  header("location: ../alldoctors.html");
+  header("location: ../alldoctors.php");
   return;
 }
 $doctor=1;
@@ -66,7 +66,7 @@ function secure($str){
                         <div class="form-head">
                             <h2>Book Appointment</h2>
                         </div>
-                        <form action="payment.html" method="post" >
+                        <form action="payment.php" method="post" >
                         <div class="form-body">
                             <div class="row form-row">
                               <select class="form-control disabled" disabled><option>Dr. <?=$doctor["name"].' '.$doctor["lname"]?></option></select>

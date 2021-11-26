@@ -5,7 +5,7 @@ if (isset($_SESSION["hms_login"]))
 {
     if (!isset($_SESSION["hms_admin"]) || !isset($_SESSION["hms_doctor"]))
     {
-        header("location: ../alldoctors.html");
+        header("location: ../alldoctors.php");
     }
     global $login;
     $login = true;
@@ -28,7 +28,7 @@ if (isset($_GET["appointmentid"]))
     $app = $con->query($q);
     if (mysqli_num_rows($app) < 1)
     {
-        header("location: ../myappointments.html");
+        header("location: ../myappointments.php");
         return;
     }
     $appo = 1;
@@ -41,7 +41,7 @@ if (isset($_GET["appointmentid"]))
     $doc = $con->query($q);
     if (mysqli_num_rows($doc) < 1)
     {
-        header("location: ../alldoctors.html");
+        header("location: ../alldoctors.php");
         return;
     }
     $doctor = 1;
@@ -54,7 +54,7 @@ if (isset($_GET["appointmentid"]))
     $patient = $con->query($q);
     if (mysqli_num_rows($patient) < 1)
     {
-        header("location: ../alldoctors.html");
+        header("location: ../alldoctors.php");
         return;
     }
     $user = 1;
@@ -90,7 +90,7 @@ else
     $doc = $con->query($q);
     if (mysqli_num_rows($doc) < 1)
     {
-        header("location: ../alldoctors.html");
+        header("location: ../alldoctors.php");
         return;
     }
     $doctor = 1;
@@ -166,13 +166,13 @@ function getRandomHex($num_bytes = 4)
       
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav ml-auto mr-0 mt-2 mt-lg-0">
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../home.html">HOME</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../about.html">ABOUT</a></li>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../alldoctors.html">ALL_DOCTORS</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../home.php">HOME</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../about.php">ABOUT</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../alldoctors.php">ALL_DOCTORS</a></li>
             <?php
 if ($login):
 ?>
-            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../dashboard.html">DASHBOARD</a></li>
+            <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../dashboard.php">DASHBOARD</a></li>
             <li class="nav-item"><a class="nav-link m-1" style="color: #000;text-decoration:none" href="../logout.php">LOGOUT</a></li>
             <?php
 else: ?>
