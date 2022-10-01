@@ -1,0 +1,42 @@
+body {
+    background-image: url("../images/bg_image.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  .bg-blur{
+    backdrop-filter: blur(10px) !important;
+  }
+
+  .btn-login{
+    background-color: #26cdd1 !important;
+  }
+  .text-primary{
+    color: #26cdd1 !important;
+  }
+  .text-secondary{
+    color: #3871c1 !important;
+  }
+  .bg-primary{
+    background-color: #26cdd1 !important;
+  }
+  .bg-secondary{
+    background-color: #3871c1 !important;
+  }
+  .btn-register{
+    background-color: #3871c1 !important;
+  }
+  .btn-book{
+    background: linear-gradient(to right , #26cdd1, #3871c1) !important;
+  }
+  body:before {
+    content: "";
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+  }
