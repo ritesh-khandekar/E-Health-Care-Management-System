@@ -32,7 +32,7 @@
 </head>
 <body>
     <div class="loader"></div>
-    <h3 style="display: inline-block;clear: both;">Prossing Payment....</h3>
+    <h3 style="display: inline-block;clear: both;">Processing Payment....</h3>
     <script>
         setTimeout(function(){
             document.querySelector("h3").textContent="Payment Successful!";

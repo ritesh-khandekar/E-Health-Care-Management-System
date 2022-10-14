@@ -40,3 +40,10 @@ body {
     z-index: -1;
     /* background-color: rgba(255, 255, 255, 0.6); */
   }
+  .ico{
+    font-size: 40px;
+  }
+  main div.dashboard-link:hover{
+    background: aliceblue !important;
+    transition: 1s;
+  }

@@ -51,9 +51,9 @@ if (isset($_SESSION["hms_login"])) {
   <br>
   <main class="container p-2 pt-4 mt-4">
     <div class="bg-blur p-4 rounded shadow">
-    <h1 class="text-primary pb-3">About E-Health care management system</h1>
-    <p class="h5 pd-2 text-white">This project deals with the Healthcare Management. This project is very helpful to both Medicare staff as well as to the public. All the branches of the Medicare can be integrated with one to another. So anybody can get the status of each branch easily from the Medicare center.</p>
-    <p class="h5 pd-2 text-white">People can take appointments online by approaching the website. That site also includes Information about the Facilities, Specialties available in every Medicare Branch. So they can also send their problems about their health and get some useful tips from the doctors.</p>
+      <h1 class="text-primary pb-3">About E-Health care management system</h1>
+      <p class="h5 pd-2 text-white">This project deals with the Healthcare Management. This project is very helpful to both Medicare staff as well as to the public. All the branches of the Medicare can be integrated with one to another. So anybody can get the status of each branch easily from the Medicare center.</p>
+      <p class="h5 pd-2 text-white">People can take appointments online by approaching the website. That site also includes Information about the Facilities, Specialties available in every Medicare Branch. So they can also send their problems about their health and get some useful tips from the doctors.</p>
     </div>
     <!--<div class="rounded shadow-sm" style="background:rgba(255,255,255,0.5)">-->
     <h2 class="text-white pt-4 text-shadow">Top Latest Doctors List:</h2>
@@ -110,7 +110,6 @@ if (isset($_SESSION["hms_login"])) {
       echo '</div>';
     }
     ?>
-    <!--</div>-->
   </main>
   <footer class="container text-white pt-4 bg-blur p-3 rounded shadow">
     <p class="float-right"><a href="#">Back to top</a></p>
@@ -120,7 +119,7 @@ if (isset($_SESSION["hms_login"])) {
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script>
-    $(function(){
+    $(function() {
       $("body").hide()
       $(".card").hide()
       $("body").fadeIn(500)
